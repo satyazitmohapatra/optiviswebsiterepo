@@ -35,16 +35,16 @@ export function Pricing({ plans }: PricingProps) {
                 />
 
                 {/* Partial Bottom Gradient Overlay */}
-                <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black via-black/70 to-transparent opacity-60 translate-y-1/2 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-90 z-10 pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-black via-black/80 to-transparent opacity-80 translate-y-1/2 transition-all duration-500 ease-out group-hover:translate-y-0 z-10 pointer-events-none" />
 
                 {/* Text Content */}
                 <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 z-20 flex flex-col justify-end pointer-events-none">
                   <div className="translate-y-6 transition-transform duration-500 ease-out group-hover:translate-y-0">
-                    <h3 className="text-xl font-bold tracking-tight text-white drop-shadow-sm mb-1 line-clamp-1">
+                    <h3 className="text-xl font-bold tracking-tight text-white drop-shadow-md mb-1 line-clamp-1">
                       {plan.name}
                     </h3>
                     
-                    <p className="mt-2 text-primary font-semibold text-lg drop-shadow-sm opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
+                    <p className="mt-1 text-primary font-bold text-base sm:text-lg drop-shadow-sm opacity-0 transition-opacity duration-500 group-hover:opacity-100 ease-out">
                       {plan.price}
                     </p>
                   </div>

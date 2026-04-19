@@ -14,33 +14,38 @@ export function Hero({ headline, subheadline, primaryCta, secondaryCta, trustTex
   return (
     <section 
       id="top" 
-      className="flex min-h-screen w-full items-start md:items-center bg-cover bg-no-repeat bg-[center_top] md:bg-[right_center] bg-[url('/images/Gemini_Generated_Image_v0lbz9v0lbz9v0lb.png')] md:bg-[url('/images/WhatsApp%20Image%202026-04-18%20at%2012.08.29%20AM.jpeg')] overflow-hidden pt-28 md:pt-0"
+      className="relative flex min-h-[100dvh] w-full items-start md:items-center bg-cover bg-no-repeat bg-[65%_center] md:bg-center bg-[url('/images/hero-teal-ants.jpg')] overflow-hidden pt-20 md:pt-0"
     >
-      <Container className="flex w-full justify-center md:justify-start">
-        <Reveal className="w-full max-w-[500px] p-6 text-center md:p-16 md:text-left">
-          <p className="mb-4 hidden text-xs font-bold uppercase tracking-widest text-blue-300 md:block">Enterprise Cloud Solutions</p>
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl text-balance leading-[1.1]">
+      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+      <Container className="relative flex w-full justify-center md:justify-start">
+        <Reveal className="w-full max-w-[650px] p-4 text-center md:p-16 md:text-left">
+          <p className="mb-4 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-accent">Enterprise Cloud Solutions</p>
+          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-7xl text-balance leading-[1.05]">
             {headline}
           </h1>
-          <p className="mt-6 text-sm font-medium text-slate-200 leading-relaxed md:hidden">
+          <p className="mt-6 text-sm font-medium text-slate-200 leading-relaxed md:hidden px-4">
             Embrace the talent revolution to remain relevant in the future.
           </p>
-          <p className="mt-6 hidden text-sm font-semibold leading-relaxed text-slate-100 tracking-wide sm:text-lg md:block">
+          <p className="mt-8 hidden text-base font-medium leading-relaxed text-slate-100 tracking-wide sm:text-lg md:block max-w-xl">
             {subheadline}
           </p>
-          <div className="mt-8 hidden flex-col items-center justify-center gap-4 sm:flex-row md:flex md:justify-start">
-            <Button href={primaryCta.href} className="w-full rounded-full px-6 py-4 text-sm font-bold shadow-none transition-all hover:shadow-lg sm:w-auto">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
+            <Button href={primaryCta.href} className="w-full rounded-full px-8 py-4 text-sm font-bold shadow-xl transition-all hover:scale-105 sm:w-auto">
               {primaryCta.label}
             </Button>
+            <Button href={secondaryCta.href} variant="secondary" className="w-full rounded-full px-8 py-4 text-sm font-bold backdrop-blur-md bg-white/10 text-white border-white/20 hover:bg-white/20 sm:w-auto md:hidden lg:flex">
+              {secondaryCta.label}
+            </Button>
           </div>
-          <div className="mt-12 hidden items-center justify-center gap-3 border-t border-white/20 pt-6 md:flex md:justify-start">
-            <div className="flex -space-x-2">
-              <div className="h-8 w-8 rounded-full border-2 border-primary bg-slate-200"></div>
-              <div className="h-8 w-8 rounded-full border-2 border-primary bg-slate-300"></div>
-              <div className="h-8 w-8 rounded-full border-2 border-primary bg-slate-400"></div>
-              <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-primary bg-white text-[10px] font-bold text-slate-800">+</div>
+          <div className="mt-12 hidden items-center justify-center gap-4 border-t border-white/10 pt-8 md:flex md:justify-start">
+            <div className="flex -space-x-3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-10 w-10 rounded-full border-2 border-primary bg-slate-800 ring-2 ring-black/20"></div>
+              ))}
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary bg-white text-[10px] font-bold text-slate-800 ring-2 ring-black/20">+</div>
             </div>
-            <p className="text-xs font-bold uppercase tracking-widest text-slate-200">{trustText}</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-300/80">{trustText}</p>
           </div>
         </Reveal>
       </Container>

@@ -2,9 +2,9 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: #0066cc; /* Corporate Blue */
-  --color-secondary: #0a1f44; /* Deep Navy */
-  --color-accent: #00d084; /* Tech Green accent */
+  --color-primary: #06b6d4; /* Cyan 500 - Matches OCS Logo */
+  --color-secondary: #083344; /* Cyan 950 - Deep Contrast */
+  --color-accent: #22d3ee; /* Cyan 400 - Vibrant Accent */
 
   --color-background: #ffffff;
   --color-foreground: #0f172a;
@@ -21,9 +21,9 @@
 
 /* Base dark mode variables class */
 .dark {
-  --color-primary: #3b82f6; 
-  --color-secondary: #1e293b;
-  --color-accent: #10b981;
+  --color-primary: #22d3ee; /* Cyan 400 */
+  --color-secondary: #082f49; /* Cyan 950 with blue tint */
+  --color-accent: #67e8f9; /* Cyan 300 */
 
   --color-background: #000000; /* Solid Black Background */
   --color-foreground: #f8fafc;
@@ -35,9 +35,9 @@
 /* Support system preference if no explicit class is set, using same values as .dark */
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
-    --color-primary: #3b82f6; 
-    --color-secondary: #1e293b;
-    --color-accent: #10b981;
+    --color-primary: #14b8a6; 
+    --color-secondary: #042f2e;
+    --color-accent: #2dd4bf;
     --color-background: #000000; 
     --color-foreground: #f8fafc;
     --color-surface: #0a0a0a;

@@ -57,7 +57,7 @@ export function Navbar({ brand, items }: NavbarProps) {
           </button>
         </div>
       </Container>
-      <div id="mobile-menu" className={cn("border-t border-border/70 bg-background px-4 py-4 md:hidden", !isOpen && "hidden")}>
+      <div id="mobile-menu" className={cn("border-t border-border/70 bg-background/95 backdrop-blur-md px-4 py-6 md:hidden transition-all duration-300 ease-in-out origin-top", !isOpen ? "hidden opacity-0 scale-y-95" : "block opacity-100 scale-y-100")}>
         <nav className="flex flex-col gap-3" aria-label="Mobile Primary">
           {items.map((item) => (
             <a key={item.href} href={item.href} className="rounded-lg px-2 py-2 text-sm text-muted transition hover:bg-surface hover:text-foreground" onClick={() => setIsOpen(false)}>

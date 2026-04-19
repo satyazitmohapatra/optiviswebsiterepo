@@ -35,17 +35,16 @@ export function Services({ services }: ServicesProps) {
                 />
 
                 {/* Partial Bottom Gradient Overlay */}
-                {/* Defaults to bottom 30% visible, expands to 60% on hover */}
-                <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black via-black/70 to-transparent opacity-60 translate-y-1/2 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-90 z-10 pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black via-black/80 to-transparent opacity-80 translate-y-1/2 transition-all duration-500 ease-out group-hover:translate-y-0 z-10 pointer-events-none" />
 
                 {/* Text Content */}
-                <div className="absolute inset-x-0 bottom-0 p-8 z-20 flex flex-col justify-end pointer-events-none">
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 z-20 flex flex-col justify-end pointer-events-none">
                   <div className="translate-y-6 transition-transform duration-500 ease-out group-hover:translate-y-0">
-                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white drop-shadow-sm">
+                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white drop-shadow-md">
                       {service.title}
                     </h3>
                     {service.description && (
-                      <p className="mt-3 text-sm leading-relaxed text-white/80 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 line-clamp-2">
+                      <p className="mt-2 text-sm leading-relaxed text-white/90 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 line-clamp-3 sm:line-clamp-2">
                         {service.description}
                       </p>
                     )}

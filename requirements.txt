@@ -1,0 +1,10 @@
+# Python Dependencies
+# Install using: pip install -r requirements.txt
+
+# Common utilities
+requests
+python-dotenv
+pandas  # Optional: for data processing
+numpy   # Optional: for numerical calculations
+fastapi # Optional: for building a backend
+uvicorn # Optional: for running the backend

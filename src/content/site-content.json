@@ -50,7 +50,7 @@
     {
       "name": "Web Development",
       "price": "Starting at ₹49,999",
-      "image": "/images/male-programmer-engages-virtual-reality-equipment-blending-coding-web-development-dynamic-digital-interface-424041018.webp"
+      "image": "/images/web-dev-vr.webp"
     },
     {
       "name": "Social Media Marketing",
@@ -60,12 +60,12 @@
     {
       "name": "Content Editing",
       "price": "Starting at ₹14,999/mo",
-      "image": "/images/panning-shot-empty-home-studio-interior-illuminated-with-rgb-lights-night-used-internet_482257-133213.avif"
+      "image": "/images/home-studio-rgb.avif"
     },
     {
       "name": "Others",
       "price": "Custom Solution",
-      "image": "/images/manager-technical-industrial-engineer-working-control-robotics-monitoring-system-software-icon-industry-network-148213832.webp"
+      "image": "/images/industry-network.webp"
     }
   ],
   "insights": [

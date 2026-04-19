@@ -1,0 +1,125 @@
+{
+  "company": {
+    "name": "Optivis",
+    "fullName": "Optivis Enterprise Solutions",
+    "tagline": "Empowering the next generation of digital enterprise",
+    "email": "contact@optivis.com",
+    "phone": "+91 90000 00000"
+  },
+  "navigation": [
+    { "label": "Services", "href": "#services" },
+    { "label": "Pricing", "href": "#pricing" },
+    { "label": "Insights", "href": "#insights" },
+    { "label": "About Us", "href": "#about" }
+  ],
+  "hero": {
+    "headline": "Navigate your digital transformation.",
+    "subheadline": "We provide next-generation digital services and consulting to help enterprises accelerate their transformation journey, build resilience, and unlock new possibilities.",
+    "primaryCta": { "label": "Explore Our Solutions", "href": "#services" },
+    "secondaryCta": { "label": "Contact Sales", "href": "#contact" },
+    "trustText": "Trusted by visionary enterprises globally."
+  },
+  "trustStrip": [
+    { "label": "95%", "description": "Client Retention Rate" },
+    { "label": "500+", "description": "Successful Projects" },
+    { "label": "Global", "description": "Delivery Footprint" },
+    { "label": "24/7", "description": "Enterprise Support" }
+  ],
+  "about": {
+    "headline": "A partner for continuous innovation.",
+    "description": "At Optivis, we go beyond conventional IT consulting. We act as a strategic partner, deeply embedding ourselves into your business processes to uncover high-impact optimization opportunities. By utilizing deep industry expertise and leading-edge technology, we help you stay ahead of the curve."
+  },
+  "services": [
+    {
+      "title": "Digital Transformation",
+      "description": "Modernize legacy systems and architectures to become a more agile, data-driven enterprise.",
+      "image": "/images/photo-1485827404703-89b55fcc595e.avif"
+    },
+    {
+      "title": "Engineering Excellence",
+      "description": "Robust, scalable, and secure software applications engineered for high performance.",
+      "image": "/images/3d-render-gpu-highperformance-computing-600nw-2657821395.webp"
+    },
+    {
+      "title": "Data & AI Insights",
+      "description": "Unlock the value of your data with advanced analytics and predictive AI modeling.",
+      "image": "/images/istockphoto-1979289147-612x612.jpg"
+    }
+  ],
+  "pricing": [
+    {
+      "name": "Web Development",
+      "price": "Starting at ₹49,999",
+      "image": "/images/male-programmer-engages-virtual-reality-equipment-blending-coding-web-development-dynamic-digital-interface-424041018.webp"
+    },
+    {
+      "name": "Social Media Marketing",
+      "price": "Starting at ₹24,999/mo",
+      "image": "/images/socialmediamarketingimg1.png"
+    },
+    {
+      "name": "Content Editing",
+      "price": "Starting at ₹14,999/mo",
+      "image": "/images/panning-shot-empty-home-studio-interior-illuminated-with-rgb-lights-night-used-internet_482257-133213.avif"
+    },
+    {
+      "name": "Others",
+      "price": "Custom Solution",
+      "image": "/images/manager-technical-industrial-engineer-working-control-robotics-monitoring-system-software-icon-industry-network-148213832.webp"
+    }
+  ],
+  "insights": [
+    {
+      "title": "The Future of Cloud Resilience in 2026",
+      "category": "Cloud Computing",
+      "snippet": "How enterprises are moving beyond simple migration to build self-healing, multi-cloud architectures.",
+      "date": "April 15, 2026",
+      "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      "title": "AI-Driven Automation in Supply Chain",
+      "category": "Artificial Intelligence",
+      "snippet": "Predictive models are reshaping how global supply chains respond to sudden volatility and demand shifts.",
+      "date": "March 22, 2026",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      "title": "Cybersecurity for Edge Computing",
+      "category": "Security",
+      "snippet": "Securing decentralized networks as IoT devices increasingly process data at the edge rather than in core hubs.",
+      "date": "February 10, 2026",
+      "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
+    }
+  ],
+  "ctaBanner": {
+    "headline": "Ready to accelerate your digital journey?",
+    "description": "Partner with Optivis to unlock enterprise-grade innovation at scale.",
+    "buttonLabel": "Contact Us Today"
+  },
+  "footerLinks": [
+    {
+      "title": "Services",
+      "links": [
+        { "label": "Digital Transformation", "href": "#" },
+        { "label": "Cloud Integration", "href": "#" },
+        { "label": "Data & AI", "href": "#" }
+      ]
+    },
+    {
+      "title": "Company",
+      "links": [
+        { "label": "About Us", "href": "#about" },
+        { "label": "Careers", "href": "#" },
+        { "label": "Global Offices", "href": "#" }
+      ]
+    },
+    {
+      "title": "Insights",
+      "links": [
+        { "label": "Articles", "href": "#insights" },
+        { "label": "Whitepapers", "href": "#" },
+        { "label": "Case Studies", "href": "#" }
+      ]
+    }
+  ]
+}

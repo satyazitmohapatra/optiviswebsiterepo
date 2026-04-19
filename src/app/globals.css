@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --color-primary: #0066cc; /* Corporate Blue */
+  --color-secondary: #0a1f44; /* Deep Navy */
+  --color-accent: #00d084; /* Tech Green accent */
+
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-surface: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-muted: #64748b;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+}
+
+/* Base dark mode variables class */
+.dark {
+  --color-primary: #3b82f6; 
+  --color-secondary: #1e293b;
+  --color-accent: #10b981;
+
+  --color-background: #000000; /* Solid Black Background */
+  --color-foreground: #f8fafc;
+  --color-surface: #0a0a0a; /* Deep dark gray instead of black for cards to stand out */
+  --color-border: #1e293b;
+  --color-muted: #94a3b8;
+}
+
+/* Support system preference if no explicit class is set, using same values as .dark */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --color-primary: #3b82f6; 
+    --color-secondary: #1e293b;
+    --color-accent: #10b981;
+    --color-background: #000000; 
+    --color-foreground: #f8fafc;
+    --color-surface: #0a0a0a;
+    --color-border: #1e293b;
+    --color-muted: #94a3b8;
+  }
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-surface: var(--color-surface);
+  --color-border: var(--color-border);
+  --color-muted: var(--color-muted);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* Global Typography System */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Barlow Condensed", "Inter", sans-serif;
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(2.25rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+/* Minimalist, classic animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(10px); /* Minimal travel distance */
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+

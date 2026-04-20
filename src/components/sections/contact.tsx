@@ -27,6 +27,9 @@ const initialForm: FormState = {
 const fieldClassName =
   "w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/25";
 
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEY = "28df687b-280f-403f-9bb0-f6527f90a212";
+
 export function Contact({ email, phone }: ContactProps) {
   const [form, setForm] = useState<FormState>(initialForm);
   const [error, setError] = useState("");
@@ -55,16 +58,27 @@ export function Contact({ email, phone }: ContactProps) {
     setStatus("submitting");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          message: form.message,
+          subject: "New enquiry from Optivis website",
+          from_name: "Optivis Website Contact Form",
+        }),
       });
 
-      if (!response.ok) {
-        throw new Error("Submission failed");
+      const result = (await response.json()) as { success?: boolean; message?: string };
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Submission failed");
       }
 
       setStatus("success");
@@ -139,7 +153,7 @@ export function Contact({ email, phone }: ContactProps) {
           <div className="mt-6 flex items-center justify-between gap-4">
             <p className="text-sm" aria-live="polite">
               {error ? <span className="text-red-600">{error}</span> : null}
-              {status === "success" ? <span className="text-green-600">Thanks! We’ll reach out shortly.</span> : null}
+              {status === "success" ? <span className="text-green-600">messege sent successfully</span> : null}
             </p>
             <Button type="submit" className="min-w-40" variant="primary" disabled={status === "submitting"}>
               {status === "submitting" ? "Sending..." : "Send Message"}

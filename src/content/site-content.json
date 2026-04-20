@@ -3,8 +3,8 @@
     "name": "Optivis",
     "fullName": "Optivis Enterprise Solutions",
     "tagline": "Empowering the next generation of digital enterprise",
-    "email": "contact@optivis.com",
-    "phone": "+91 90000 00000"
+    "email": "optivis.ocs.support@gmail.com",
+    "phone": "+91 7978289942"
   },
   "navigation": [
     { "label": "Services", "href": "#services" },
@@ -21,7 +21,7 @@
   },
   "trustStrip": [
     { "label": "95%", "description": "Client Retention Rate" },
-    { "label": "500+", "description": "Successful Projects" },
+    { "label": "50+", "description": "Successful Projects" },
     { "label": "Global", "description": "Delivery Footprint" },
     { "label": "24/7", "description": "Enterprise Support" }
   ],
@@ -29,6 +29,29 @@
     "headline": "A partner for continuous innovation.",
     "description": "At Optivis, we go beyond conventional IT consulting. We act as a strategic partner, deeply embedding ourselves into your business processes to uncover high-impact optimization opportunities. By utilizing deep industry expertise and leading-edge technology, we help you stay ahead of the curve."
   },
+  "whatWeDo": [
+    {
+      "title": "Citizen Gravience System",
+      "description": "Civic engagement platform connecting citizens with local governance for transparent community development.",
+      "image": "/images/image copy.png",
+      "liveDemo": "https://cityzen07.netlify.app/",
+      "githubRepo": "https://github.com/satyazitmohapatra/Citizen-Gravience-System.git"
+    },
+    {
+      "title": "Cricket Score Predictor",
+      "description": "AI-powered predictive analytics for cricket match outcomes with real-time data integration.",
+      "image": "/images/Gemini_Generated_Image_glf56oglf56oglf5.png",
+      "liveDemo": "https://cricscore07.netlify.app/",
+      "githubRepo": "https://github.com/rudraprasadrout/Cricket_score_predictor_CRICSCORE"
+    },
+    {
+      "title": "Heart Disease Predictor",
+      "description": "Machine learning model for early detection and risk assessment of cardiovascular conditions.",
+      "image": "/images/Gemini_Generated_Image_3fp2hd3fp2hd3fp2.png",
+      "liveDemo": "https://heart-disease-predictor-1-7uko.onrender.com",
+      "githubRepo": "https://github.com/satyazitmohapatra/Heart_disease_Predictor.git"
+    }
+  ],
   "services": [
     {
       "title": "Digital Transformation",
@@ -49,17 +72,17 @@
   "pricing": [
     {
       "name": "Web Development",
-      "price": "Starting at ₹49,999",
-      "image": "/images/futuristic-virtual-reality-headset-visualizing-complex-software-development-dynamic-digital-interface-424041018.webp"
+      "price": "Starting at ₹4999",
+      "image": "/images/male-programmer-engages-virtual-reality-equipment-blending-coding-web-development-dynamic-digital-interface-424041018.webp"
     },
     {
       "name": "Social Media Marketing",
-      "price": "Starting at ₹24,999/mo",
+      "price": "Starting at ₹2999/mo",
       "image": "/images/socialmediamarketingimg1.png"
     },
     {
       "name": "Content Editing",
-      "price": "Starting at ₹14,999/mo",
+      "price": "Starting at ₹1999/mo",
       "image": "/images/home-studio-rgb.avif"
     },
     {

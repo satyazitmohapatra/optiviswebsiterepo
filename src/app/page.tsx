@@ -9,11 +9,13 @@ import { Pricing } from "@/components/sections/pricing";
 import { Insights } from "@/components/sections/insights";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { Services } from "@/components/sections/services";
+import { WhatWeDo } from "@/components/sections/what-we-do";
 import { content } from "@/lib/content";
 
 const SECTION_TRACKING = [
   { id: "top", label: "Home" },
   { id: "about", label: "Who We Are" },
+  { id: "what-we-do", label: "What We Do" },
   { id: "services", label: "Services" },
   { id: "pricing", label: "Pricing" },
   { id: "insights", label: "Insights" },
@@ -35,6 +37,7 @@ export default function Home() {
         />
         <TrustStrip stats={content.trustStrip} />
         <About headline={content.about.headline} description={content.about.description} />
+        <WhatWeDo projects={content.whatWeDo} />
         <Services services={content.services} />
         <Pricing plans={content.pricing} />
         <Insights insights={content.insights} />

@@ -18,8 +18,8 @@ export function Hero({ headline, subheadline, primaryCta, secondaryCta, trustTex
     >
       <div className="absolute inset-0 bg-black/20" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
-      <Container className="relative flex w-full justify-center md:justify-start">
-        <Reveal className="w-full max-w-[650px] p-4 text-center md:p-16 md:text-left">
+      <Container className="relative flex w-full justify-start px-4 md:px-8">
+        <Reveal className="w-full max-w-[650px] text-left">
           <p className="mb-4 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-accent">Enterprise Cloud Solutions</p>
           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-7xl text-balance leading-[1.05]">
             {headline}
@@ -30,22 +30,13 @@ export function Hero({ headline, subheadline, primaryCta, secondaryCta, trustTex
           <p className="mt-8 hidden text-base font-medium leading-relaxed text-slate-100 tracking-wide sm:text-lg md:block max-w-xl">
             {subheadline}
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
+          <div className="mt-10 flex flex-col items-center justify-start gap-4 sm:flex-row">
             <Button href={primaryCta.href} className="w-full rounded-full px-8 py-4 text-sm font-bold shadow-xl transition-all hover:scale-105 sm:w-auto">
               {primaryCta.label}
             </Button>
-            <Button href={secondaryCta.href} variant="secondary" className="w-full rounded-full px-8 py-4 text-sm font-bold backdrop-blur-md bg-white/10 text-white border-white/20 hover:bg-white/20 sm:w-auto md:hidden lg:flex">
+            <Button href={secondaryCta.href} variant="secondary" className="w-full rounded-full px-8 py-4 text-sm font-bold backdrop-blur-md bg-white/10 text-white border-white/20 hover:bg-white/20 sm:w-auto">
               {secondaryCta.label}
             </Button>
-          </div>
-          <div className="mt-12 hidden items-center justify-center gap-4 border-t border-white/10 pt-8 md:flex md:justify-start">
-            <div className="flex -space-x-3">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-10 w-10 rounded-full border-2 border-primary bg-slate-800 ring-2 ring-black/20"></div>
-              ))}
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary bg-white text-[10px] font-bold text-slate-800 ring-2 ring-black/20">+</div>
-            </div>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-300/80">{trustText}</p>
           </div>
         </Reveal>
       </Container>

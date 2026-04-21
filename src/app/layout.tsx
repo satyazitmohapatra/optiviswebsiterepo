@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Digital Transformation & Enterprise Solutions | Optivis Consultancy",
   description:
     "Optivis provides cutting-edge digital transformation, engineering excellence, and AI-powered insights for enterprises. Navigate your digital transformation with our consulting services.",
-  keywords: "digital transformation, consulting services, web development, AI insights, enterprise software, business consulting",
+  keywords: "digital transformation, consulting services, web development, AI insights, enterprise software, business consulting,OCS,optivis,Optivis Consultancy services,optivisconsultancyservices,IT Consultancy in Odisha,Multilingual Digital Solutions (Odia, Hindi, English),G2C Portal Development,Digital Transformation India",
   authors: [{ name: "Optivis Consultancy Services" }],
   creator: "Optivis Consultancy Services",
   publisher: "Optivis Consultancy Services",

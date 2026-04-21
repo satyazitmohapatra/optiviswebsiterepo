@@ -19,7 +19,7 @@ export function generateStructuredData() {
           height: 300,
         },
         sameAs: [
-          'https://www.linkedin.com/company/optivis',
+          'https://www.linkedin.com/company/optivisconsultancy',
           'https://github.com/optivis',
           'https://twitter.com/optivis',
         ],

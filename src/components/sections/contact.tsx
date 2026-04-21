@@ -8,6 +8,10 @@ import { SectionHeading } from "@/components/ui/section-heading";
 type ContactProps = {
   email: string;
   phone: string;
+  socials?: {
+    linkedin?: string;
+    instagram?: string;
+  };
 };
 
 type FormState = {
@@ -30,7 +34,7 @@ const fieldClassName =
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const WEB3FORMS_ACCESS_KEY = "28df687b-280f-403f-9bb0-f6527f90a212";
 
-export function Contact({ email, phone }: ContactProps) {
+export function Contact({ email, phone, socials }: ContactProps) {
   const [form, setForm] = useState<FormState>(initialForm);
   const [error, setError] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
@@ -102,6 +106,20 @@ export function Contact({ email, phone }: ContactProps) {
             <p>Email: {email}</p>
             <p>Phone: {phone}</p>
           </div>
+          {socials && (
+            <div className="flex gap-4 pt-4">
+              {socials.instagram && (
+                <a href={socials.instagram} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-surface border border-border hover:bg-primary hover:text-background hover:border-primary transition-all text-muted hover:scale-110 duration-200" aria-label="Instagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                </a>
+              )}
+              {socials.linkedin && (
+                <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-surface border border-border hover:bg-primary hover:text-background hover:border-primary transition-all text-muted hover:scale-110 duration-200" aria-label="LinkedIn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+              )}
+            </div>
+          )}
         </div>
         <form className="rounded-2xl border border-border bg-background p-6 shadow-sm sm:p-8" onSubmit={handleSubmit} aria-busy={status === "submitting"}>
           <div className="grid gap-4 sm:grid-cols-2">

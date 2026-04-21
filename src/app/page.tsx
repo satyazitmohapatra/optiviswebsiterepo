@@ -46,13 +46,14 @@ export default function Home() {
           description={content.ctaBanner.description} 
           buttonLabel={content.ctaBanner.buttonLabel} 
         />
-        <Contact email={content.company.email} phone={content.company.phone} />
+        <Contact email={content.company.email} phone={content.company.phone} socials={content.company.socials} />
       </main>
       <Footer
         companyName={content.company.fullName || content.company.name}
         email={content.company.email}
         phone={content.company.phone}
         links={content.footerLinks}
+        socials={content.company.socials}
       />
     </>
   );

@@ -25,7 +25,7 @@ export function Navbar({ brand, items }: NavbarProps) {
         <a href="#top" className="flex items-center outline-none transition-opacity hover:opacity-80">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/7cbd1be0-16ad-4824-876a-e15daab8e35e-removebg-preview.png"
+            src="/images/logo.png"
             alt={brand}
             className="h-10 sm:h-12 w-auto object-contain drop-shadow-sm"
           />

@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     images: ["https://optivisconsultancyservices.tech/images/og-image.png"],
   },
   verification: {
-    google: "add-your-google-verification-code",
+    google: "gv-ai4ka5f77ibkeo.dv.googlehosted.com",
   },
   category: "business",
   classification: "Business Consulting & Software Development",

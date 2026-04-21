@@ -14,6 +14,7 @@ type FooterProps = {
   companyName: string;
   email: string;
   phone: string;
+  address?: string;
   links: FooterColumn[];
   socials?: {
     linkedin?: string;
@@ -21,7 +22,7 @@ type FooterProps = {
   };
 };
 
-export function Footer({ companyName, email, phone, links, socials }: FooterProps) {
+export function Footer({ companyName, email, phone, address, links, socials }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -36,6 +37,7 @@ export function Footer({ companyName, email, phone, links, socials }: FooterProp
             <div className="space-y-2 text-muted font-medium">
               <p>{email}</p>
               <p>{phone}</p>
+              {address && <p>{address}</p>}
             </div>
           </div>
           

@@ -8,6 +8,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 type ContactProps = {
   email: string;
   phone: string;
+  address?: string;
   socials?: {
     linkedin?: string;
     instagram?: string;
@@ -34,7 +35,7 @@ const fieldClassName =
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const WEB3FORMS_ACCESS_KEY = "28df687b-280f-403f-9bb0-f6527f90a212";
 
-export function Contact({ email, phone, socials }: ContactProps) {
+export function Contact({ email, phone, address, socials }: ContactProps) {
   const [form, setForm] = useState<FormState>(initialForm);
   const [error, setError] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
@@ -105,6 +106,7 @@ export function Contact({ email, phone, socials }: ContactProps) {
           <div className="space-y-1 text-sm text-muted">
             <p>Email: {email}</p>
             <p>Phone: {phone}</p>
+            {address && <p>Address: {address}</p>}
           </div>
           {socials && (
             <div className="flex gap-4 pt-4">

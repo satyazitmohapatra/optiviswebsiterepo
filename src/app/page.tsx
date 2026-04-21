@@ -10,6 +10,7 @@ import { Insights } from "@/components/sections/insights";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { Services } from "@/components/sections/services";
 import { WhatWeDo } from "@/components/sections/what-we-do";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { content } from "@/lib/content";
 
 const SECTION_TRACKING = [
@@ -41,20 +42,29 @@ export default function Home() {
         <Services services={content.services} />
         <Pricing plans={content.pricing} />
         <Insights insights={content.insights} />
-        <CtaBanner 
-          headline={content.ctaBanner.headline} 
-          description={content.ctaBanner.description} 
-          buttonLabel={content.ctaBanner.buttonLabel} 
+        <CtaBanner
+          headline={content.ctaBanner.headline}
+          description={content.ctaBanner.description}
+          buttonLabel={content.ctaBanner.buttonLabel}
         />
-        <Contact email={content.company.email} phone={content.company.phone} socials={content.company.socials} />
+        <Contact 
+          email={content.company.email} 
+          phone={content.company.phone} 
+          address={content.company.address}
+          socials={content.company.socials} 
+        />
       </main>
       <Footer
         companyName={content.company.fullName || content.company.name}
         email={content.company.email}
         phone={content.company.phone}
+        address={content.company.address}
         links={content.footerLinks}
         socials={content.company.socials}
       />
+      {content.company.whatsapp && (
+        <WhatsAppButton phoneNumber={content.company.whatsapp} />
+      )}
     </>
   );
 }

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { ScrollNavigation } from "@/components/layout/scroll-navigation";
@@ -12,19 +11,6 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { Services } from "@/components/sections/services";
 import { WhatWeDo } from "@/components/sections/what-we-do";
 import { content } from "@/lib/content";
-
-export const metadata: Metadata = {
-  title: "Optivis | Digital Transformation & Web Development Services",
-  description:
-    "Premium web development, software consulting, and digital transformation services for startups and enterprises. 95% client retention, 50+ successful projects.",
-  openGraph: {
-    title: "Optivis | Digital Transformation & Web Development Services",
-    description:
-      "Premium web development, software consulting, and digital transformation services for startups and enterprises.",
-    url: "https://optivisconsultancyservices.tech",
-    type: "website",
-  },
-};
 
 const SECTION_TRACKING = [
   { id: "top", label: "Home" },

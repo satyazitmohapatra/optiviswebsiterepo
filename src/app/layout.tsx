@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   category: "business",
   classification: "Business Consulting & Software Development",
   icons: {
-    icon: "/images/logo.jpeg",
-    shortcut: "/images/logo.jpeg",
-    apple: "/images/logo.jpeg",
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
   },
 };
 

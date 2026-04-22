@@ -56,14 +56,6 @@ export const metadata: Metadata = {
   },
   category: "business",
   classification: "Business Consulting & Software Development",
-  icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/images/logo.png", type: "image/png" }
-    ],
-    shortcut: "/favicon.ico",
-    apple: "/images/logo.png",
-  },
 };
 
 export default function RootLayout({

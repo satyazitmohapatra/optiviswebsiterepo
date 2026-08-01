@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --color-primary: #06b6d4; /* Cyan 500 - Matches OCS Logo */
-  --color-secondary: #083344; /* Cyan 950 - Deep Contrast */
-  --color-accent: #22d3ee; /* Cyan 400 - Vibrant Accent */
+  --color-primary: #0F5FDC;   /* Corporate Blue - primary brand action color */
+  --color-secondary: #071C3C; /* Deep Navy - headers, dark sections */
+  --color-accent: #E8A33D;    /* Amber - highlights, stats, CTAs */
 
   --color-background: #ffffff;
-  --color-foreground: #0f172a;
-  --color-surface: #f8fafc;
-  --color-border: #e2e8f0;
-  --color-muted: #64748b;
+  --color-foreground: #0B1524;
+  --color-surface: #F4F7FB;
+  --color-border: #E2E8F0;
+  --color-muted: #56637A;
 
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -21,28 +21,28 @@
 
 /* Base dark mode variables class */
 .dark {
-  --color-primary: #22d3ee; /* Cyan 400 */
-  --color-secondary: #082f49; /* Cyan 950 with blue tint */
-  --color-accent: #67e8f9; /* Cyan 300 */
+  --color-primary: #4C8DFF;   /* Lighter corporate blue for contrast on dark */
+  --color-secondary: #050E20; /* Near-black navy */
+  --color-accent: #F0B75B;    /* Warm amber accent */
 
-  --color-background: #000000; /* Solid Black Background */
-  --color-foreground: #f8fafc;
-  --color-surface: #0a0a0a; /* Deep dark gray instead of black for cards to stand out */
-  --color-border: #1e293b;
-  --color-muted: #94a3b8;
+  --color-background: #060B15;
+  --color-foreground: #F1F5F9;
+  --color-surface: #0C1524;
+  --color-border: #1C2938;
+  --color-muted: #93A3BE;
 }
 
 /* Support system preference if no explicit class is set, using same values as .dark */
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
-    --color-primary: #14b8a6; 
-    --color-secondary: #042f2e;
-    --color-accent: #2dd4bf;
-    --color-background: #000000; 
-    --color-foreground: #f8fafc;
-    --color-surface: #0a0a0a;
-    --color-border: #1e293b;
-    --color-muted: #94a3b8;
+    --color-primary: #4C8DFF;
+    --color-secondary: #050E20;
+    --color-accent: #F0B75B;
+    --color-background: #060B15;
+    --color-foreground: #F1F5F9;
+    --color-surface: #0C1524;
+    --color-border: #1C2938;
+    --color-muted: #93A3BE;
   }
 }
 
@@ -70,23 +70,31 @@ body {
 
 /* Global Typography System */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Barlow Condensed", "Inter", sans-serif;
-  line-height: 1.1;
-  letter-spacing: 0.5px;
+  font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   font-weight: 700;
   margin-top: 0;
 }
 
 h1 {
-  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 4.5vw, 3.75rem);
 }
 
 h2 {
-  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
 }
 
 h3 {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.375rem, 2.25vw, 1.75rem);
+}
+
+/* Subtle enterprise grid texture, used on dark/navy sections */
+.grid-texture {
+  background-image:
+    linear-gradient(color-mix(in oklab, white 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, white 6%, transparent) 1px, transparent 1px);
+  background-size: 42px 42px;
 }
 
 /* Minimalist, classic animation */
@@ -100,4 +108,310 @@ h3 {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ==========================================================================
+   Custom Cursor Styles
+   ========================================================================== */
+
+/* Apply default cursor hiding only on fine pointer devices (mouse/trackpad) */
+@media (pointer: fine) {
+  html,
+  body,
+  a,
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  select,
+  summary {
+    cursor: none;
+  }
+
+  /* Preserve default text cursor over input fields, textareas, and editable text */
+  input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  [contenteditable="true"] {
+    cursor: text !important;
+  }
+}
+
+.custom-cursor-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99999;
+  overflow: hidden;
+}
+
+.custom-cursor-dot,
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  will-change: transform, opacity, width, height, border-color, background-color, box-shadow;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Small center dot */
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-primary);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--color-primary) 60%, transparent);
+}
+
+/* Larger semi-transparent outer ring */
+.custom-cursor-ring {
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid color-mix(in srgb, var(--color-primary) 70%, transparent);
+  background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  backdrop-filter: blur(0.5px);
+}
+
+/* Visible state */
+.custom-cursor-dot.cursor-visible,
+.custom-cursor-ring.cursor-visible {
+  opacity: 1;
+}
+
+/* Hidden state (e.g. over text inputs or off window) */
+.custom-cursor-dot.cursor-hidden,
+.custom-cursor-ring.cursor-hidden {
+  opacity: 0 !important;
+}
+
+/* Hover state on links, buttons, and interactive elements */
+.custom-cursor-dot.cursor-hover {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 10px var(--color-accent);
+}
+
+.custom-cursor-ring.cursor-hover {
+  width: 56px;
+  height: 56px;
+  border-color: var(--color-accent);
+  background-color: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--color-accent) 55%, transparent),
+              inset 0 0 10px color-mix(in srgb, var(--color-accent) 25%, transparent);
+}
+
+/* ==========================================================================
+   Hero Section & Enterprise Glassmorphism Animations
+   ========================================================================== */
+
+@keyframes ambient-mesh {
+  0%, 100% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate(4%, -4%) scale(1.1);
+    opacity: 0.75;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.8deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-1deg);
+  }
+}
+
+@keyframes pulse-node {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}
+
+@keyframes scroll-dot {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-ambient-mesh {
+  animation: ambient-mesh 14s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out 3s infinite;
+}
+
+.animate-scroll-dot {
+  animation: scroll-dot 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* Glassmorphism panel styling */
+.glass-panel {
+  background: rgba(15, 25, 45, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.glass-badge {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   Infinite Marquee & Technology Card Animations
+   ========================================================================== */
+
+@keyframes marquee-left {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes float-micro {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0.4deg);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-left 40s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-right 40s linear infinite;
+}
+
+/* Pause animation on hover */
+.group-marquee:hover .animate-marquee-left,
+.group-marquee:hover .animate-marquee-right {
+  animation-play-state: paused !important;
+}
+
+/* Responsive Marquee Speeds */
+@media (max-width: 1024px) {
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation-duration: 50s;
+  }
+}
+
+@media (max-width: 640px) {
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation-duration: 65s;
+  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right,
+  .animate-team-marquee,
+  .animate-ambient-mesh {
+    animation-play-state: paused !important;
+  }
+}
+
+/* Team Section Infinite Marquee */
+@keyframes team-marquee-slide {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+.animate-team-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: team-marquee-slide 35s linear infinite;
+}
+
+.group-team-marquee:hover .animate-team-marquee {
+  animation-play-state: paused !important;
+}
+
+@media (max-width: 1024px) {
+  .animate-team-marquee {
+    animation-duration: 45s;
+  }
+}
+
+@media (max-width: 640px) {
+  .animate-team-marquee {
+    animation-duration: 60s;
+  }
+}
+
+
+
+
 

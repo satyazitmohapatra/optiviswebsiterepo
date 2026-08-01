@@ -21,8 +21,8 @@
   "hero": {
     "headline": "Navigate your digital transformation.",
     "subheadline": "We provide next-generation digital services and consulting to help enterprises accelerate their transformation journey, build resilience, and unlock new possibilities.",
-    "primaryCta": { "label": "Explore Our Solutions", "href": "#services" },
-    "secondaryCta": { "label": "Contact Sales", "href": "#contact" },
+    "primaryCta": { "label": "Book a Free Consultation", "href": "#contact" },
+    "secondaryCta": { "label": "View Case Studies", "href": "#what-we-do" },
     "trustText": "Trusted by visionary enterprises globally."
   },
   "trustStrip": [
@@ -34,6 +34,33 @@
   "about": {
     "headline": "A partner for continuous innovation.",
     "description": "At Optivis, we go beyond conventional IT consulting. We act as a strategic partner, deeply embedding ourselves into your business processes to uncover high-impact optimization opportunities. By utilizing deep industry expertise and leading-edge technology, we help you stay ahead of the curve."
+  },
+  "whyChooseUs": {
+    "badge": "Why Optivis",
+    "title": "A dependable technology partner, not just a vendor",
+    "description": "We combine enterprise discipline with startup speed, so your roadmap moves forward without the usual friction.",
+    "reasons": [
+      {
+        "title": "Client-Centric Engagement",
+        "description": "Dedicated project leads and transparent reporting keep you informed at every milestone.",
+        "icon": "users"
+      },
+      {
+        "title": "Rapid Delivery Cycles",
+        "description": "Agile sprints and clear scoping mean working software reaches you faster.",
+        "icon": "clock"
+      },
+      {
+        "title": "Secure by Design",
+        "description": "Security and compliance are built into architecture decisions from day one.",
+        "icon": "shield"
+      },
+      {
+        "title": "Multilingual & Accessible",
+        "description": "Odia, Hindi, and English-ready solutions built for real citizen and enterprise reach.",
+        "icon": "globe"
+      }
+    ]
   },
   "whatWeDo": [
     {
@@ -62,44 +89,94 @@
     {
       "title": "Digital Transformation",
       "description": "Modernize legacy systems and architectures to become a more agile, data-driven enterprise.",
-      "image": "/images/photo-1485827404703-89b55fcc595e.avif"
+      "image": "/images/photo-1485827404703-89b55fcc595e.avif",
+      "icon": "transform",
+      "points": ["Legacy system modernization", "Process automation", "Change management"]
     },
     {
       "title": "Engineering Excellence",
       "description": "Robust, scalable, and secure software applications engineered for high performance.",
-      "image": "/images/3d-render-gpu-highperformance-computing-600nw-2657821395.webp"
+      "image": "/images/3d-render-gpu-highperformance-computing-600nw-2657821395.webp",
+      "icon": "engineering",
+      "points": ["Custom application development", "Cloud-native architecture", "Quality & security engineering"]
     },
     {
       "title": "Data & AI Insights",
       "description": "Unlock the value of your data with advanced analytics and predictive AI modeling.",
-      "image": "/images/istockphoto-1979289147-612x612.jpg"
+      "image": "/images/istockphoto-1979289147-612x612.jpg",
+      "icon": "data",
+      "points": ["Predictive analytics", "Business intelligence dashboards", "AI/ML model deployment"]
     },
     {
       "title": "Public Sector & G2C Portals",
       "description": "Secure, highly accessible government portals facilitating seamless citizen engagement and multilingual support.",
-      "image": "/images/image copy.png"
+      "image": "/images/image copy.png",
+      "icon": "government",
+      "points": ["Multilingual civic platforms", "Accessibility compliance", "Secure citizen data handling"]
     }
   ],
   "pricing": [
     {
       "name": "Web Development",
-      "price": "Starting at ₹4999",
-      "image": "/images/male-programmer-engages-virtual-reality-equipment-blending-coding-web-development-dynamic-digital-interface-424041018.webp"
+      "price": "Starting from ₹25,000",
+      "suitableFor": ["Business Landing Pages", "Corporate Websites", "Portfolio Websites"],
+      "image": "/images/male-programmer-engages-virtual-reality-equipment-blending-coding-web-development-dynamic-digital-interface-424041018.webp",
+      "icon": "web",
+      "features": [
+        "Responsive Design",
+        "SEO Optimized",
+        "Performance Optimized",
+        "Contact Forms",
+        "CMS Ready",
+        "30 Days Support"
+      ],
+      "cta": "Schedule Consultation"
     },
     {
-      "name": "Social Media Marketing",
-      "price": "Starting at ₹2999/mo",
-      "image": "/images/socialmediamarketingimg1.png"
+      "name": "Digital Marketing",
+      "price": "Starting from ₹15,000/month",
+      "image": "/images/socialmediamarketingimg1.png",
+      "icon": "social",
+      "features": [
+        "Social Media Management",
+        "Content Strategy",
+        "Ad Campaign Setup",
+        "Monthly Reports",
+        "Performance Tracking",
+        "Growth Consulting"
+      ],
+      "cta": "Schedule Consultation"
     },
     {
-      "name": "Content Editing",
-      "price": "Starting at ₹1999/mo",
-      "image": "/images/home-studio-rgb.avif"
+      "name": "Content & Creative",
+      "price": "Starting from ₹12,000/month",
+      "image": "/images/home-studio-rgb.avif",
+      "icon": "content",
+      "features": [
+        "Professional Content Writing",
+        "Graphic Design",
+        "Video Editing",
+        "Brand Assets",
+        "Marketing Creatives",
+        "Monthly Content Calendar"
+      ],
+      "cta": "Schedule Consultation"
     },
     {
-      "name": "Others",
-      "price": "Custom Solution",
-      "image": "/images/manager-technical-industrial-engineer-working-control-robotics-monitoring-system-software-icon-industry-network-148213832.webp"
+      "name": "Enterprise Custom Solution",
+      "price": "Custom Quote",
+      "description": "Every enterprise has unique requirements. Book a strategy session with our experts to receive a tailored proposal.",
+      "image": "/images/manager-technical-industrial-engineer-working-control-robotics-monitoring-system-software-icon-industry-network-148213832.webp",
+      "icon": "custom",
+      "features": [
+        "Dedicated Solution Architect",
+        "Custom Software Development",
+        "AI Integration",
+        "Cloud Infrastructure",
+        "Enterprise Security",
+        "Long-Term Technical Partnership"
+      ],
+      "cta": "Request Custom Proposal"
     }
   ],
   "insights": [

@@ -1,6 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/ui/reveal";
 
 type CtaBannerProps = {
   headline: string;
@@ -10,28 +12,38 @@ type CtaBannerProps = {
 
 export function CtaBanner({ headline, description, buttonLabel }: CtaBannerProps) {
   return (
-    <section className="py-24 sm:py-32 relative overflow-hidden bg-primary text-white">
-      <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(circle_at_right,_rgba(255,255,255,0.15),_transparent_50%)] pointer-events-none" />
-      <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 rounded-full w-[800px] max-w-[100vw] h-auto aspect-square bg-secondary/80 mix-blend-multiply opacity-20 blur-3xl" />
-      
+    <section className="py-28 sm:py-36 relative overflow-hidden bg-[#050C1A] text-white border-y border-white/10">
+      {/* Aurora Ambient Background Engine */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -left-40 top-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary/25 blur-[150px] animate-ambient-mesh" />
+        <div className="absolute -right-40 top-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-accent/20 blur-[150px] animate-ambient-mesh" style={{ animationDelay: "-7s" }} />
+        <div className="absolute inset-0 grid-texture opacity-30" />
+      </div>
+
       <Container className="relative z-10 text-center">
-        <Reveal>
-          <div className="max-w-2xl mx-auto space-y-8">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6">
-              {headline}
-            </h2>
-            <p className="text-lg leading-relaxed text-white/80 mb-10">
-              {description}
-            </p>
+        <motion.div
+          initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mx-auto space-y-8 p-10 sm:p-14 rounded-3xl bg-white/[0.03] backdrop-blur-xl border border-white/15 shadow-2xl"
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
+            {headline}
+          </h2>
+          <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-slate-300 max-w-2xl mx-auto">
+            {description}
+          </p>
+          <div className="pt-2">
             <Button
               href="#contact"
-              variant="secondary"
-              className="bg-white text-primary hover:bg-white/90 border-0 text-base px-8 py-3 rounded-full font-bold shadow-lg shadow-black/10 transition-transform hover:-translate-y-0.5"
+              variant="accent"
+              className="text-base px-9 py-4 shadow-2xl shadow-accent/30 hover:shadow-accent/50"
             >
               {buttonLabel}
             </Button>
           </div>
-        </Reveal>
+        </motion.div>
       </Container>
     </section>
   );

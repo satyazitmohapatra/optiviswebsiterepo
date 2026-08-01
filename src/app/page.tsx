@@ -9,15 +9,18 @@ import { Pricing } from "@/components/sections/pricing";
 import { Insights } from "@/components/sections/insights";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { Services } from "@/components/sections/services";
-import { WhatWeDo } from "@/components/sections/what-we-do";
+import { WhyChooseUs } from "@/components/sections/why-choose-us";
+import { TrustedTechnologies } from "@/components/sections/trusted-technologies";
+import { Team } from "@/components/sections/team";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { content } from "@/lib/content";
 
 const SECTION_TRACKING = [
   { id: "top", label: "Home" },
   { id: "about", label: "Who We Are" },
-  { id: "what-we-do", label: "What We Do" },
+  { id: "what-we-do", label: "Technologies" },
   { id: "services", label: "Services" },
+  { id: "team", label: "Team" },
   { id: "pricing", label: "Pricing" },
   { id: "insights", label: "Insights" },
   { id: "contact", label: "Contact" },
@@ -26,7 +29,7 @@ const SECTION_TRACKING = [
 export default function Home() {
   return (
     <>
-      <Navbar brand={content.company.name} items={content.navigation} />
+      <Navbar brand={content.company.name} items={content.navigation} phone={content.company.phone} email={content.company.email} />
       <ScrollNavigation sections={SECTION_TRACKING} />
       <main>
         <Hero
@@ -38,8 +41,15 @@ export default function Home() {
         />
         <TrustStrip stats={content.trustStrip} />
         <About headline={content.about.headline} description={content.about.description} />
-        <WhatWeDo projects={content.whatWeDo} />
+        <TrustedTechnologies />
         <Services services={content.services} />
+        <WhyChooseUs
+          badge={content.whyChooseUs.badge}
+          title={content.whyChooseUs.title}
+          description={content.whyChooseUs.description}
+          reasons={content.whyChooseUs.reasons}
+        />
+        <Team />
         <Pricing plans={content.pricing} />
         <Insights insights={content.insights} />
         <CtaBanner

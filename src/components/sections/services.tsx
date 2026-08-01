@@ -1,11 +1,16 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
-import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { IconWrapper } from "@/components/ui/icon-wrapper";
+import { Card3D } from "@/components/ui/card-3d";
 
 type Service = {
   title: string;
   description: string;
-  image: string;
+  icon?: string;
+  points?: string[];
 };
 
 type ServicesProps = {
@@ -14,46 +19,60 @@ type ServicesProps = {
 
 export function Services({ services }: ServicesProps) {
   return (
-    <section id="services" className="py-24 sm:py-32 bg-background border-y border-border overflow-hidden">
-      <Container className="space-y-16">
+    <section id="services" className="py-28 sm:py-36 bg-surface/60 border-y border-border/80 relative overflow-hidden">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 h-[500px] w-[600px] rounded-full bg-primary/5 blur-[160px] pointer-events-none" />
+
+      <Container className="space-y-16 relative z-10">
         <SectionHeading
           badge="Services"
           title="Enterprise Solutions"
-          description="High-impact web architectures tailored to scale, delivering resilience and clear business growth."
+          description="High-impact architectures tailored to scale, delivering resilience and measurable business growth."
           align="center"
         />
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.12 } },
+          }}
+          className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {services.map((service) => (
-            <Reveal key={service.title}>
-              <div className="group relative block overflow-hidden rounded-2xl bg-surface border border-border aspect-[4/5] w-full hover:shadow-2xl transition-all duration-300">
-                {/* Background Image */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="absolute inset-0 block h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                />
-
-                {/* Partial Bottom Gradient Overlay */}
-                <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black via-black/80 to-transparent opacity-80 translate-y-1/2 transition-all duration-500 ease-out group-hover:translate-y-0 z-10 pointer-events-none" />
-
-                {/* Text Content */}
-                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 z-20 flex flex-col justify-end pointer-events-none">
-                  <div className="translate-y-6 transition-transform duration-500 ease-out group-hover:translate-y-0">
-                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white drop-shadow-md">
-                      {service.title}
-                    </h3>
-                    {service.description && (
-                      <p className="mt-2 text-sm leading-relaxed text-white/90 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 line-clamp-3 sm:line-clamp-2">
-                        {service.description}
-                      </p>
-                    )}
-                  </div>
+            <motion.div
+              key={service.title}
+              variants={{
+                hidden: { opacity: 0, y: 30, filter: "blur(6px)" },
+                show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } },
+              }}
+            >
+              <Card3D depth={10} className="h-full rounded-2xl border border-border bg-background p-8 shadow-sm hover:shadow-2xl transition-all duration-300">
+                <div className="group relative flex h-full flex-col">
+                  {/* Glowing Top Accent Bar */}
+                  <span className="absolute -top-8 -left-8 right-0 h-1 rounded-t bg-gradient-to-r from-primary via-accent to-primary scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100" />
+                  
+                  <IconWrapper icon={service.icon ?? "code"} className="mb-6 group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight">{service.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted mb-6 flex-1">{service.description}</p>
+                  
+                  {service.points && (
+                    <ul className="space-y-2.5 border-t border-border/80 pt-5">
+                      {service.points.map((point) => (
+                        <li key={point} className="flex items-start gap-2.5 text-xs font-semibold text-muted group-hover:text-foreground transition-colors">
+                          <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-primary group-hover:bg-accent transition-colors" />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-              </div>
-            </Reveal>
+              </Card3D>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

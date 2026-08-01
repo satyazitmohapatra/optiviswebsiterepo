@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { cn } from "@/lib/cn";
+import { MagneticButton } from "./magnetic-button";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "accent";
 
 type ButtonProps = {
   href?: string;
@@ -15,30 +18,52 @@ type ButtonProps = {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-primary text-white shadow-soft hover:bg-primary/90 focus-visible:ring-primary/60",
+    "bg-primary text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:bg-primary/95 focus-visible:ring-primary/60 border border-primary/40",
   secondary:
-    "border border-border bg-surface text-foreground hover:border-primary/40 hover:bg-primary/5 focus-visible:ring-primary/30",
+    "border border-white/20 bg-white/5 backdrop-blur-md text-foreground hover:border-white/40 hover:bg-white/10 focus-visible:ring-primary/30",
+  accent:
+    "bg-accent text-secondary shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40 hover:bg-accent/95 focus-visible:ring-accent/60 font-bold",
   ghost:
-    "text-foreground hover:bg-surface focus-visible:ring-primary/30",
+    "text-foreground hover:bg-white/10 focus-visible:ring-primary/30",
 };
 
 const baseStyles =
-  "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-60";
+  "group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300 transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-60";
 
-export function Button({ href, type = "button", variant = "primary", className, children, onClick, disabled }: ButtonProps) {
+export function Button({
+  href,
+  type = "button",
+  variant = "primary",
+  className,
+  children,
+  onClick,
+  disabled,
+}: ButtonProps) {
   const classes = cn(baseStyles, variantStyles[variant], className);
+
+  const content = (
+    <>
+      {/* Specular Light Reflection Sweep on Hover */}
+      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+      <span className="relative z-10 flex items-center gap-2">{children}</span>
+    </>
+  );
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
-        {children}
-      </Link>
+      <MagneticButton>
+        <Link href={href} className={classes}>
+          {content}
+        </Link>
+      </MagneticButton>
     );
   }
 
   return (
-    <button type={type} className={classes} onClick={onClick} disabled={disabled}>
-      {children}
-    </button>
+    <MagneticButton>
+      <button type={type} className={classes} onClick={onClick} disabled={disabled}>
+        {content}
+      </button>
+    </MagneticButton>
   );
 }

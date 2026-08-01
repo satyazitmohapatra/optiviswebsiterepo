@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
+import { CustomCursor } from "@/components/ui/custom-cursor";
+import { SmoothScroll } from "@/components/ui/smooth-scroll";
+import { BookingProvider } from "@/lib/booking/booking-context";
+import { BookingModal } from "@/components/ui/booking-modal";
 import { generateStructuredData } from "@/lib/seo-schema";
 import "./globals.css";
 
@@ -79,7 +83,13 @@ export default function RootLayout({
       </head>
       <body className="min-h-full bg-background text-foreground transition-colors duration-500" suppressHydrationWarning>
         <ThemeProvider defaultTheme="system">
-          {children}
+          <BookingProvider>
+            <SmoothScroll>
+              <CustomCursor />
+              <BookingModal />
+              {children}
+            </SmoothScroll>
+          </BookingProvider>
         </ThemeProvider>
       </body>
     </html>

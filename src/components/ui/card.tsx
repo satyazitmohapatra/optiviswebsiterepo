@@ -6,5 +6,14 @@ type CardProps = {
 };
 
 export function Card({ children, className }: CardProps) {
-  return <article className={cn("rounded-2xl border border-border bg-surface p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft", className)}>{children}</article>;
+  return (
+    <article
+      className={cn(
+        "rounded-lg border border-border bg-background p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-soft",
+        className,
+      )}
+    >
+      {children}
+    </article>
+  );
 }

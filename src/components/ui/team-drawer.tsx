@@ -67,7 +67,7 @@ export function TeamDrawer({ member, onClose }: TeamDrawerProps) {
             exit={{ x: "100%" }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="relative z-10 w-full max-w-xl max-h-screen overflow-y-auto bg-white text-slate-900 p-6 sm:p-8 shadow-2xl border-l border-slate-200 select-text"
+            className="relative z-10 w-full max-w-lg max-h-screen overflow-y-auto bg-white text-slate-900 p-6 sm:p-8 shadow-2xl border-l border-slate-200 select-text flex flex-col justify-between"
           >
             {/* Close Button */}
             <button
@@ -85,7 +85,7 @@ export function TeamDrawer({ member, onClose }: TeamDrawerProps) {
             <div className="space-y-6 pt-2">
               {/* Header Info */}
               <div className="flex items-start gap-5">
-                <div className="h-28 w-28 sm:h-32 sm:w-32 flex-none overflow-hidden rounded-2xl border border-slate-200 shadow-md">
+                <div className="h-24 w-24 sm:h-28 sm:w-28 flex-none overflow-hidden rounded-2xl border border-slate-200 shadow-md">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={member.portrait}
@@ -98,73 +98,23 @@ export function TeamDrawer({ member, onClose }: TeamDrawerProps) {
                   <span className="inline-block rounded-full bg-primary/10 text-primary border border-primary/20 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider mb-2">
                     {member.role}
                   </span>
-                  <h2 id="team-drawer-title" className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight truncate">
+                  <h2 id="team-drawer-title" className="text-2xl font-extrabold text-slate-900 tracking-tight truncate">
                     {member.name}
                   </h2>
-                  <p className="text-sm font-semibold text-slate-500 mt-1">{member.expertise}</p>
-
-                  <div className="mt-3 flex items-center gap-2 text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-lg w-fit">
-                    <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    <span>{member.experienceYears}+ Years Enterprise Experience</span>
-                  </div>
+                  <p className="text-xs font-semibold text-slate-500 mt-1">{member.expertise}</p>
                 </div>
               </div>
 
-              {/* Biography */}
-              <div className="space-y-2 pt-2 border-t border-slate-100">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Professional Bio</h4>
-                <p className="text-sm text-slate-600 leading-relaxed">{member.bio}</p>
-              </div>
-
-              {/* Personal Quote */}
-              {member.personalQuote && (
-                <div className="p-4 rounded-2xl bg-primary/5 border border-primary/15 text-slate-800 text-xs italic space-y-1">
-                  <p>&ldquo;{member.personalQuote}&rdquo;</p>
-                  <p className="not-italic font-bold text-primary text-[10px] uppercase text-right">&mdash; {member.name}</p>
-                </div>
-              )}
-
-              {/* Core Expertise */}
-              <div className="space-y-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Areas of Expertise</h4>
-                <div className="flex flex-wrap gap-2">
-                  {member.coreExpertise.map((item) => (
-                    <span key={item} className="rounded-lg bg-slate-100 border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-700">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Responsibilities */}
-              <div className="space-y-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Responsibilities at Optivis</h4>
-                <ul className="space-y-2 text-xs text-slate-600">
-                  {member.responsibilities.map((resp) => (
-                    <li key={resp} className="flex items-start gap-2">
-                      <svg className="w-4 h-4 text-primary flex-none mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path d="M5 13l4 4L19 7" /></svg>
-                      <span>{resp}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Current Projects */}
-              <div className="space-y-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Current Key Projects</h4>
-                <div className="space-y-2">
-                  {member.currentProjects.map((proj) => (
-                    <div key={proj} className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800 flex items-center justify-between">
-                      <span>{proj}</span>
-                      <span className="text-[10px] font-bold uppercase text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Active</span>
-                    </div>
-                  ))}
-                </div>
+              {/* Concise One-Paragraph Brief */}
+              <div className="pt-2 border-t border-slate-100">
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
+                  {member.bio}
+                </p>
               </div>
 
               {/* Skills Badges */}
               <div className="space-y-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Skills &amp; Technologies</h4>
+                <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Skills &amp; Technologies</h4>
                 <div className="flex flex-wrap gap-1.5">
                   {member.skills.map((skill) => (
                     <span key={skill} className="rounded-md bg-slate-900 text-white px-2.5 py-1 text-[11px] font-bold">
@@ -175,17 +125,17 @@ export function TeamDrawer({ member, onClose }: TeamDrawerProps) {
               </div>
 
               {/* Social Action Pill Buttons */}
-              <div className="pt-5 border-t border-slate-100 space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Connect &amp; Social Links</h4>
-                <div className="flex flex-wrap gap-2.5">
+              <div className="pt-4 border-t border-slate-100 space-y-2">
+                <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Connect</h4>
+                <div className="flex flex-wrap gap-2">
                   {member.socials.linkedin && (
                     <a
                       href={member.socials.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-bold text-slate-800 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-sm transition-all duration-200"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-bold text-slate-800 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-sm transition-all duration-200"
                     >
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.6 1.6 0 1 0 1.6 1.6 1.6 1.6 0 0 0-1.6-1.6Z"/></svg>
+                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.6 1.6 0 1 0 1.6 1.6 1.6 1.6 0 0 0-1.6-1.6Z"/></svg>
                       <span>LinkedIn</span>
                       <span className="text-[10px] opacity-70">↗</span>
                     </a>
@@ -196,9 +146,9 @@ export function TeamDrawer({ member, onClose }: TeamDrawerProps) {
                       href={member.socials.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-bold text-slate-800 hover:bg-slate-900 hover:text-white hover:border-slate-900 shadow-sm transition-all duration-200"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-bold text-slate-800 hover:bg-slate-900 hover:text-white hover:border-slate-900 shadow-sm transition-all duration-200"
                     >
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
                       <span>GitHub</span>
                       <span className="text-[10px] opacity-70">↗</span>
                     </a>
@@ -209,9 +159,9 @@ export function TeamDrawer({ member, onClose }: TeamDrawerProps) {
                       href={member.socials.portfolio}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-bold text-slate-800 hover:bg-primary hover:text-white hover:border-primary shadow-sm transition-all duration-200"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-bold text-slate-800 hover:bg-primary hover:text-white hover:border-primary shadow-sm transition-all duration-200"
                     >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
                       <span>Portfolio</span>
                       <span className="text-[10px] opacity-70">↗</span>
                     </a>
@@ -220,27 +170,27 @@ export function TeamDrawer({ member, onClose }: TeamDrawerProps) {
                   {member.socials.email && (
                     <a
                       href={`mailto:${member.socials.email}`}
-                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-bold text-slate-800 hover:bg-accent hover:text-slate-950 hover:border-accent shadow-sm transition-all duration-200"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-bold text-slate-800 hover:bg-accent hover:text-slate-950 hover:border-accent shadow-sm transition-all duration-200"
                     >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                       <span>Email</span>
                     </a>
                   )}
                 </div>
               </div>
-
-              {/* Profile Consultation CTA */}
-              <div className="pt-4 border-t border-slate-100">
-                <button
-                  type="button"
-                  onClick={handleScheduleMeeting}
-                  className="w-full rounded-2xl bg-primary hover:bg-primary/90 text-white font-bold py-3.5 px-6 text-xs uppercase tracking-wider shadow-lg shadow-primary/25 transition-all duration-200"
-                >
-                  Schedule a Strategy Meeting with {member.name.split(" ")[0]}
-                </button>
-              </div>
-
             </div>
+
+            {/* Profile Consultation CTA */}
+            <div className="pt-6 border-t border-slate-100 mt-6">
+              <button
+                type="button"
+                onClick={handleScheduleMeeting}
+                className="w-full rounded-2xl bg-primary hover:bg-primary/90 text-white font-bold py-3.5 px-6 text-xs uppercase tracking-wider shadow-lg shadow-primary/25 transition-all duration-200"
+              >
+                Schedule a Strategy Meeting with {member.name.split(" ")[0]}
+              </button>
+            </div>
+
           </motion.div>
         </div>
       )}

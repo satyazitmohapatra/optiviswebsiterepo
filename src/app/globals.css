@@ -19,31 +19,18 @@
   --space-xl: 2rem;
 }
 
-/* Base dark mode variables class */
-.dark {
-  --color-primary: #4C8DFF;   /* Lighter corporate blue for contrast on dark */
-  --color-secondary: #050E20; /* Near-black navy */
-  --color-accent: #F0B75B;    /* Warm amber accent */
+/* Fixed Light Theme Variables */
+:root,
+.light {
+  --color-primary: #0F5FDC;   /* Corporate Blue - primary brand action color */
+  --color-secondary: #071C3C; /* Deep Navy - headers, dark sections */
+  --color-accent: #E8A33D;    /* Amber - highlights, stats, CTAs */
 
-  --color-background: #060B15;
-  --color-foreground: #F1F5F9;
-  --color-surface: #0C1524;
-  --color-border: #1C2938;
-  --color-muted: #93A3BE;
-}
-
-/* Support system preference if no explicit class is set, using same values as .dark */
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --color-primary: #4C8DFF;
-    --color-secondary: #050E20;
-    --color-accent: #F0B75B;
-    --color-background: #060B15;
-    --color-foreground: #F1F5F9;
-    --color-surface: #0C1524;
-    --color-border: #1C2938;
-    --color-muted: #93A3BE;
-  }
+  --color-background: #ffffff;
+  --color-foreground: #0B1524;
+  --color-surface: #F4F7FB;
+  --color-border: #E2E8F0;
+  --color-muted: #56637A;
 }
 
 @theme inline {

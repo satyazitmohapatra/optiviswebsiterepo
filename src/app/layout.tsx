@@ -15,10 +15,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#060B15" },
-  ],
+  themeColor: "#ffffff",
 };
 
 export const metadata: Metadata = {
@@ -189,7 +186,7 @@ export default function RootLayout({
   const structuredData = generateStructuredData();
 
   return (
-    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+    <html lang="en" className="h-full antialiased light" suppressHydrationWarning>
       <head>
         {/* JSON-LD: inline script for immediate crawlability (no afterInteractive delay) */}
         <script
@@ -214,7 +211,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="min-h-full bg-background text-foreground transition-colors duration-500" suppressHydrationWarning>
-        <ThemeProvider defaultTheme="light" enableSystem={false}>
+        <ThemeProvider>
           <BookingProvider>
             <SmoothScroll>
               <CustomCursor />

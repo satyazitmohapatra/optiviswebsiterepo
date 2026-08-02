@@ -24,40 +24,29 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = "light",
-  enableSystem = false,
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    const storedTheme = window.localStorage.getItem("theme") as Theme | null;
-    if (storedTheme) {
-      setTheme(storedTheme);
-    }
+    // Lock theme to light and clean up old stored theme preferences
+    window.localStorage.setItem("theme", "light");
+    const root = window.document.documentElement;
+    root.classList.remove("dark");
+    root.classList.add("light");
   }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove("light", "dark");
-
-    if (theme === "system" && enableSystem) {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-      root.classList.add(systemTheme);
-      return;
-    }
-
-    const activeTheme = theme === "system" ? "light" : theme;
-    root.classList.add(activeTheme);
-  }, [theme, enableSystem]);
+    root.classList.remove("dark");
+    root.classList.add("light");
+  }, [theme]);
 
   const value = {
-    theme,
+    theme: "light" as Theme,
     setTheme: (newTheme: Theme) => {
-      window.localStorage.setItem("theme", newTheme);
-      setTheme(newTheme);
+      window.localStorage.setItem("theme", "light");
+      setTheme("light");
     },
   };
 

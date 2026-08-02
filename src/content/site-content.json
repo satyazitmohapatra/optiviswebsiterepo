@@ -68,21 +68,21 @@
     {
       "title": "Citizen Gravience System",
       "description": "Civic engagement platform connecting citizens with local governance for transparent community development.",
-      "image": "/images/image copy.png",
+      "image": "/images/image copy.webp",
       "liveDemo": "https://cityzen07.netlify.app/",
       "githubRepo": "https://github.com/satyazitmohapatra/Citizen-Gravience-System.git"
     },
     {
       "title": "Cricket Score Predictor",
       "description": "AI-powered predictive analytics for cricket match outcomes with real-time data integration.",
-      "image": "/images/Gemini_Generated_Image_glf56oglf56oglf5.png",
+      "image": "/images/Gemini_Generated_Image_glf56oglf56oglf5.webp",
       "liveDemo": "https://cricscore07.netlify.app/",
       "githubRepo": "https://github.com/rudraprasadrout/Cricket_score_predictor_CRICSCORE"
     },
     {
       "title": "Heart Disease Predictor",
       "description": "Machine learning model for early detection and risk assessment of cardiovascular conditions.",
-      "image": "/images/Gemini_Generated_Image_3fp2hd3fp2hd3fp2.png",
+      "image": "/images/Gemini_Generated_Image_3fp2hd3fp2hd3fp2.webp",
       "liveDemo": "https://heart-disease-predictor-1-7uko.onrender.com",
       "githubRepo": "https://github.com/satyazitmohapatra/Heart_disease_Predictor.git"
     }
@@ -112,7 +112,7 @@
     {
       "title": "Public Sector & G2C Portals",
       "description": "Secure, highly accessible government portals facilitating seamless citizen engagement and multilingual support.",
-      "image": "/images/image copy.png",
+      "image": "/images/image copy.webp",
       "icon": "government",
       "points": ["Multilingual civic platforms", "Accessibility compliance", "Secure citizen data handling"]
     }
@@ -137,7 +137,7 @@
     {
       "name": "Digital Marketing",
       "price": "Starting from ₹15,000/month",
-      "image": "/images/socialmediamarketingimg1.png",
+      "image": "/images/socialmediamarketingimg1.webp",
       "icon": "social",
       "features": [
         "Social Media Management",

@@ -25,7 +25,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Satyajit Mohapatra",
     role: "CEO & Co-Founder",
     expertise: "Executive Strategy & Digital Transformation",
-    portrait: "/images/team_satyajit_mohapatra.png",
+    portrait: "/images/team_satyajit_mohapatra.webp",
     bio: "Satyajit drives Optivis' vision, strategic partnerships, and global growth. He works closely with enterprise leadership teams across industries to guide digital transformation strategies and high-impact technology investments.",
     experienceYears: 8,
     coreExpertise: [
@@ -56,7 +56,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Rudra Prasad Rout",
     role: "CTO & Co-Founder",
     expertise: "Cloud Architecture & Enterprise Software Systems",
-    portrait: "/images/team_rudra_prasad_rout.png",
+    portrait: "/images/team_rudra_prasad_rout.webp",
     bio: "Rudra leads technology innovation and technical architecture at Optivis. He specializes in distributed systems, multi-region cloud infrastructure, enterprise security, and AI-driven platform integrations.",
     experienceYears: 8,
     coreExpertise: [
@@ -88,7 +88,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "T. Omkar",
     role: "COO & Co-Founder",
     expertise: "Operations & Enterprise Delivery Management",
-    portrait: "/images/team_t_omkar.jpg",
+    portrait: "/images/team_t_omkar.webp",
     bio: "Omkar oversees daily operations, delivery pipelines, and client service management at Optivis. He ensures every engineering engagement is delivered on time, within budget, and to top enterprise quality standards.",
     experienceYears: 7,
     coreExpertise: [
@@ -118,7 +118,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Abhisekh Das",
     role: "Marketing Manager & Co-Founder",
     expertise: "Brand Strategy & Growth Marketing",
-    portrait: "/images/team_abhisekh_das.png",
+    portrait: "/images/team_abhisekh_das.webp",
     bio: "Abhisekh leads marketing strategies, brand identity, and client acquisition at Optivis. He focuses on positioning Optivis as a trusted global consultancy for enterprise software and digital services.",
     experienceYears: 6,
     coreExpertise: [
@@ -148,7 +148,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Durga Prasad Dutta",
     role: "Social Media Manager",
     expertise: "Social Media Strategy & Community Engagement",
-    portrait: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800",
+    portrait: "/images/team_durga_prasad_dutta.webp",
     bio: "Durga manages Optivis' social media presence, brand communications, and digital audience engagement. He creates compelling content that highlights Optivis' technological achievements and client success stories.",
     experienceYears: 5,
     coreExpertise: [

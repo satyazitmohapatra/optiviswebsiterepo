@@ -13,8 +13,8 @@ type HeroProps = {
 };
 
 const MASCOT_IMAGES = [
-  { src: "/images/hero_mascot_owl.png", alt: "Optivis 3D Executive Owl Mascot" },
-  { src: "/images/hero_mascot_falcon.png", alt: "Optivis 3D Executive Falcon Mascot" },
+  { src: "/images/hero_mascot_owl.webp", alt: "Optivis 3D Executive Owl Mascot" },
+  { src: "/images/hero_mascot_falcon.webp", alt: "Optivis 3D Executive Falcon Mascot" },
 ];
 
 export function Hero({
@@ -142,6 +142,8 @@ export function Hero({
                   key={MASCOT_IMAGES[mascotIndex].src}
                   src={MASCOT_IMAGES[mascotIndex].src}
                   alt={MASCOT_IMAGES[mascotIndex].alt}
+                  loading={mascotIndex === 0 ? "eager" : "lazy"}
+                  decoding="async"
                   initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.97 }}

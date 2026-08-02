@@ -23,7 +23,7 @@ type AboutSlide = {
 const ABOUT_SLIDES: AboutSlide[] = [
   {
     id: "digital-city",
-    image: "/images/about_digital_city_innovation.png",
+    image: "/images/about_digital_city_innovation.webp",
     badgeValue: "24/7",
     badgeLabel: "Enterprise Support",
     title: "Powering the City That Never Sleeps",
@@ -31,7 +31,7 @@ const ABOUT_SLIDES: AboutSlide[] = [
   },
   {
     id: "gpu-computing",
-    image: "/images/about_ai_supercomputing.png",
+    image: "/images/about_ai_supercomputing.webp",
     badgeValue: "99.99%",
     badgeLabel: "Uptime SLA",
     title: "Next-Gen AI & High-Performance Computing",
@@ -39,7 +39,7 @@ const ABOUT_SLIDES: AboutSlide[] = [
   },
   {
     id: "cloud-security",
-    image: "/images/about_cloud_cybersecurity.png",
+    image: "/images/about_cloud_cybersecurity.webp",
     badgeValue: "50+",
     badgeLabel: "Global Deployments",
     title: "Seamless Cloud Architecture & Security",
@@ -47,7 +47,7 @@ const ABOUT_SLIDES: AboutSlide[] = [
   },
   {
     id: "digital-transformation",
-    image: "/images/about_digital_transformation.png",
+    image: "/images/about_digital_transformation.webp",
     badgeValue: "10x",
     badgeLabel: "Velocity Boost",
     title: "Hyper-Scalable Digital Transformation",

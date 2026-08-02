@@ -85,8 +85,9 @@ export function Navbar({ brand, items, phone, email }: NavbarProps) {
           <a href="#top" className="flex items-center outline-none transition-opacity hover:opacity-90">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt={brand}
+              decoding="async"
               className="h-10 sm:h-12 w-auto object-contain"
             />
           </a>

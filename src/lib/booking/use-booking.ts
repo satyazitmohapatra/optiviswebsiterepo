@@ -33,22 +33,19 @@ export function useBooking() {
 
   const isSubmittingRef = useRef(false);
 
-  const handleChange = useCallback(
-    (field: keyof BookingFormData, value: string) => {
-      setFormData((prev) => ({ ...prev, [field]: value }));
-      // Clear inline field error as soon as user types
-      setErrors((prev) => {
-        if (prev[field]) {
-          const next = { ...prev };
-          delete next[field];
-          return next;
-        }
-        return prev;
-      });
-      if (serverError) setServerError(null);
-    },
-    [serverError]
-  );
+  const handleChange = useCallback((field: keyof BookingFormData, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    // Clear inline field error as soon as user types
+    setErrors((prev) => {
+      if (prev[field]) {
+        const next = { ...prev };
+        delete next[field];
+        return next;
+      }
+      return prev;
+    });
+    setServerError(null);
+  }, []);
 
   const resetForm = useCallback(() => {
     setFormData(initialFormData);

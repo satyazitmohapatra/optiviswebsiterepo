@@ -13,10 +13,12 @@
     }
   },
   "navigation": [
+    { "label": "Who We Are", "href": "#about" },
     { "label": "Services", "href": "#services" },
+    { "label": "Team", "href": "#team" },
     { "label": "Pricing", "href": "#pricing" },
-    { "label": "Insights", "href": "#insights" },
-    { "label": "About Us", "href": "#about" }
+    { "label": "Free Audit", "href": "#free-audit" },
+    { "label": "FAQ", "href": "#faq" }
   ],
   "hero": {
     "headline": "Navigate your digital transformation.",

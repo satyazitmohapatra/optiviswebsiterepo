@@ -125,6 +125,9 @@ export function Pricing({ plans }: PricingProps) {
         >
           {plans.map((plan, i) => {
             const featured = i === 0;
+            const isCustomQuote = plan.price.toLowerCase().includes("custom");
+            const rawPrice = plan.price.replace(/^Starting from\s*/i, "");
+
             return (
               <motion.div
                 key={plan.name}
@@ -138,60 +141,81 @@ export function Pricing({ plans }: PricingProps) {
                   className={`h-full rounded-2xl p-7 sm:p-8 transition-all duration-300 ${
                     featured
                       ? "border-2 border-primary bg-background shadow-2xl shadow-primary/10 relative"
-                      : "border border-border bg-background shadow-sm hover:shadow-xl"
+                      : "border border-border bg-background shadow-sm hover:shadow-xl relative"
                   }`}
                 >
-                  <div className="relative flex h-full flex-col">
-                    {featured && (
-                      <span className="absolute -top-11 left-0 rounded-full bg-accent px-3.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-secondary shadow-md">
-                        Most Popular
-                      </span>
-                    )}
+                  <div className="flex h-full flex-col justify-between">
+                    <div>
+                      {/* Top Bar: Icon + Popular Badge */}
+                      <div className="flex items-center justify-between mb-6">
+                        <IconWrapper icon={plan.icon ?? "custom"} />
+                        {featured && (
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400 shadow-sm">
+                            <span className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
+                            Most Popular
+                          </span>
+                        )}
+                      </div>
 
-                    <IconWrapper icon={plan.icon ?? "custom"} className="mb-6" />
-                    <h3 className="text-xl font-bold text-foreground mb-1 tracking-tight">{plan.name}</h3>
-                    
-                    <div className="mb-4">
-                      <span className="text-xs text-muted block font-medium">Starting from</span>
-                      <p className="text-2xl font-extrabold text-primary">{plan.price}</p>
-                    </div>
+                      {/* Title */}
+                      <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight">{plan.name}</h3>
 
-                    {plan.suitableFor && plan.suitableFor.length > 0 && (
-                      <div className="mb-5 p-3 rounded-lg bg-surface border border-border/70 text-xs">
-                        <p className="font-bold text-foreground mb-1">Suitable for:</p>
-                        <ul className="space-y-1 text-muted">
-                          {plan.suitableFor.map((item) => (
-                            <li key={item} className="flex items-center gap-1.5">
-                              <span className="h-1 w-1 rounded-full bg-accent" />
-                              {item}
+                      {/* Price Block */}
+                      <div className="mb-6 pb-5 border-b border-border/70">
+                        {!isCustomQuote && (
+                          <span className="text-[11px] font-semibold text-muted uppercase tracking-wider block mb-1">
+                            Starting from
+                          </span>
+                        )}
+                        <p className="text-2xl sm:text-3xl font-black text-primary tracking-tight">
+                          {rawPrice}
+                        </p>
+                      </div>
+
+                      {/* Suitable For Chips (if present) */}
+                      {plan.suitableFor && plan.suitableFor.length > 0 && (
+                        <div className="mb-5 p-3 rounded-xl bg-surface/70 border border-border/70 text-xs">
+                          <p className="font-bold text-foreground mb-1.5 text-[11px] uppercase tracking-wider">Suitable for:</p>
+                          <ul className="space-y-1 text-muted">
+                            {plan.suitableFor.map((item) => (
+                              <li key={item} className="flex items-center gap-1.5 text-xs">
+                                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {plan.description && (
+                        <p className="text-xs text-muted leading-relaxed mb-5">{plan.description}</p>
+                      )}
+
+                      {/* Features List */}
+                      {plan.features && (
+                        <ul className="space-y-2.5 mb-8">
+                          {plan.features.map((feature) => (
+                            <li key={feature} className="flex items-start gap-2.5 text-xs text-muted font-medium">
+                              <span className="mt-0.5 flex h-4 w-4 flex-none items-center justify-center rounded-full bg-primary/10 text-primary">
+                                <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5L20 7" /></svg>
+                              </span>
+                              <span>{feature}</span>
                             </li>
                           ))}
                         </ul>
-                      </div>
-                    )}
+                      )}
+                    </div>
 
-                    {plan.description && (
-                      <p className="text-xs text-muted leading-relaxed mb-5">{plan.description}</p>
-                    )}
-
-                    {plan.features && (
-                      <ul className="space-y-2.5 border-t border-border/80 pt-5 mb-8 flex-1">
-                        {plan.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-2 text-xs text-muted">
-                            <svg viewBox="0 0 24 24" className="mt-0.5 h-3.5 w-3.5 flex-none text-primary" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5L20 7" /></svg>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-
-                    <Button
-                      onClick={() => openBookingModal(mapPlanToService(plan.name))}
-                      variant={featured ? "accent" : "secondary"}
-                      className="w-full text-xs py-3 font-bold uppercase tracking-wider"
-                    >
-                      {plan.cta || "Schedule Consultation"}
-                    </Button>
+                    {/* CTA Button */}
+                    <div className="pt-2 mt-auto">
+                      <Button
+                        onClick={() => openBookingModal(mapPlanToService(plan.name))}
+                        variant={featured ? "accent" : "secondary"}
+                        className="w-full text-xs py-3 font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
+                      >
+                        {plan.cta || "Schedule Consultation"}
+                      </Button>
+                    </div>
                   </div>
                 </Card3D>
               </motion.div>
@@ -205,13 +229,16 @@ export function Pricing({ plans }: PricingProps) {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-3xl border border-white/15 bg-background/90 p-8 sm:p-12 shadow-2xl backdrop-blur-2xl space-y-10"
+          className="rounded-3xl border border-slate-200 bg-white p-8 sm:p-12 shadow-xl space-y-10"
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-border">
             <div>
-              <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-primary border border-primary/20 mb-2">
-                Bespoke Solutions
-              </span>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary flex-none" />
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-primary">
+                  Bespoke Solutions
+                </span>
+              </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
                 Customize Your Package
               </h3>

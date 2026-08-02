@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useBookingModal } from "@/lib/booking/booking-context";
 import { useBooking } from "@/lib/booking/use-booking";
@@ -52,10 +52,10 @@ const TIME_SLOT_OPTIONS: TimeSlotOption[] = [
 ];
 
 const fieldClassName =
-  "w-full rounded-lg border border-border bg-background/80 px-4 py-3 text-sm text-foreground outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:bg-background disabled:opacity-60";
+  "w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition-all duration-300 focus:border-[#E8A33D] focus:ring-2 focus:ring-[#E8A33D]/20 placeholder:text-slate-400 disabled:opacity-60";
 
 const selectClassName =
-  "w-full rounded-lg border border-border bg-background/80 px-4 py-3 text-sm text-foreground outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:bg-background disabled:opacity-60 appearance-none";
+  "w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition-all duration-300 focus:border-[#E8A33D] focus:ring-2 focus:ring-[#E8A33D]/20 disabled:opacity-60 appearance-none";
 
 export function BookingModal() {
   const {
@@ -79,20 +79,22 @@ export function BookingModal() {
     resetForm,
   } = useBooking();
 
-  // Sync state from context when modal opens
+  const wasOpenRef = useRef(false);
+
+  // Sync state from context ONLY when modal opens
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && !wasOpenRef.current) {
       if (selectedService) handleChange("selectedService", selectedService);
       if (selectedBudget) handleChange("budgetRange", selectedBudget);
       if (selectedTimeline) handleChange("timeline", selectedTimeline);
       if (customServices && customServices.length > 0) {
-        handleChange("customServices", customServices.join(", ") as any);
         handleChange(
           "notes",
           `Selected Package Services: ${customServices.join(", ")} | Timeline: ${selectedTimeline || "ASAP"}`
         );
       }
     }
+    wasOpenRef.current = isOpen;
   }, [isOpen, selectedService, selectedBudget, selectedTimeline, customServices, handleChange]);
 
   // Handle ESC key to close modal
@@ -157,7 +159,7 @@ export function BookingModal() {
           exit={{ opacity: 0, scale: 0.92, y: 20 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           onClick={(e) => e.stopPropagation()}
-          className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/15 bg-background/95 p-6 sm:p-8 shadow-2xl backdrop-blur-2xl text-foreground select-text"
+          className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-2xl text-slate-900 select-text"
         >
           {/* Close X Button */}
           <button

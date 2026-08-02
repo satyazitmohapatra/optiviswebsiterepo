@@ -33,9 +33,13 @@ const SERVICE_DROPDOWN_OPTIONS = [
 ];
 
 const inputClassName =
-  "w-full rounded-xl border border-border bg-background/70 px-4 py-3.5 text-sm text-foreground outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:bg-background placeholder:text-muted/60";
+  "w-full rounded-xl border border-border bg-surface px-4 py-3.5 text-xs text-foreground outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted/60";
 
-export function Contact({ email = "contact@optivisconsultancyservices.tech", phone = "+91 98765 43210", address }: ContactProps) {
+export function Contact({
+  email = "optivis.ocs.support@gmail.com",
+  phone = "+91 79782 89942",
+  address,
+}: ContactProps) {
   const { openBookingModal } = useBookingModal();
 
   const [formData, setFormData] = useState<ContactFormData>({
@@ -78,7 +82,6 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
     setIsSubmitting(true);
 
     try {
-      // Simulate API form submission
       await new Promise((resolve) => setTimeout(resolve, 1200));
       setIsSubmitting(false);
       setIsSuccess(true);
@@ -96,7 +99,7 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
   };
 
   return (
-    <section id="contact" className="py-28 sm:py-36 bg-background text-foreground relative overflow-hidden">
+    <section id="contact" className="py-28 sm:py-36 bg-surface/60 text-foreground border-y border-border/80 relative overflow-hidden select-none">
       {/* Background Ambient Glows */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary/5 blur-[160px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 h-[450px] w-[450px] rounded-full bg-accent/5 blur-[150px] pointer-events-none" />
@@ -106,66 +109,69 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
           
           {/* LEFT SIDE: Enterprise Contact Information */}
           <motion.div
-            initial={{ opacity: 0, x: -30, filter: "blur(6px)" }}
-            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 space-y-8"
           >
-            <div>
-              <span className="inline-block rounded-full bg-primary/10 px-3.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-primary border border-primary/20 mb-3">
-                Get In Touch
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance leading-[1.15]">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-accent">
+                <span className="h-[2px] w-4 rounded-full bg-accent flex-none" />
+                <span>Direct Discovery &amp; Inquiries</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.12]">
                 Let&apos;s Build Something Great Together
               </h2>
-              <p className="text-base text-muted leading-relaxed mt-4">
-                Whether you&apos;re planning a new digital product, modernizing existing systems, or exploring AI-powered solutions, we&apos;d love to hear about your goals.
+
+              <p className="text-sm sm:text-base text-muted leading-relaxed font-normal">
+                Whether you&apos;re planning a new enterprise digital product, modernizing legacy systems, or scaling cloud architecture, our senior technology leads are ready to collaborate.
               </p>
             </div>
 
             {/* Guaranteed Response Time Badge */}
-            <div className="inline-flex items-center gap-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2.5 text-xs font-bold text-emerald-400 backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>⚡ Average Response Time: Within 24 Hours</span>
+            <div className="inline-flex items-center gap-2.5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse flex-none" />
+              <span>⚡ Average Response Time: Under 2 Hours</span>
             </div>
 
-            {/* Contact Details Cards */}
+            {/* Contact Details List */}
             <div className="space-y-4 pt-2">
               {/* Email Card */}
               <a
                 href={`mailto:${email}`}
-                className="group flex items-start gap-4 p-4 rounded-2xl border border-border bg-surface/50 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-surface hover:-translate-y-1 hover:shadow-lg"
+                className="group flex items-center gap-4 p-4 rounded-2xl border border-border bg-background transition-all duration-300 hover:border-primary/50 hover:shadow-lg"
               >
-                <div className="h-11 w-11 flex-none rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 transition-transform group-hover:scale-110">
+                <div className="h-11 w-11 flex-none rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted block">Business Email</span>
-                  <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">{email}</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-muted block">Business Email</span>
+                  <span className="text-xs sm:text-sm font-bold text-foreground group-hover:text-primary transition-colors">{email}</span>
                 </div>
               </a>
 
               {/* Phone Card */}
               <a
                 href={`tel:${phone.replace(/\s/g, "")}`}
-                className="group flex items-start gap-4 p-4 rounded-2xl border border-border bg-surface/50 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-surface hover:-translate-y-1 hover:shadow-lg"
+                className="group flex items-center gap-4 p-4 rounded-2xl border border-border bg-background transition-all duration-300 hover:border-accent/50 hover:shadow-lg"
               >
-                <div className="h-11 w-11 flex-none rounded-xl bg-accent/10 text-accent flex items-center justify-center border border-accent/20 transition-transform group-hover:scale-110">
+                <div className="h-11 w-11 flex-none rounded-xl bg-accent/10 text-accent flex items-center justify-center border border-accent/20 group-hover:scale-110 transition-transform">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted block">Phone Number</span>
-                  <span className="text-sm font-bold text-foreground group-hover:text-accent transition-colors">{phone}</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-muted block">Phone Number</span>
+                  <span className="text-xs sm:text-sm font-bold text-foreground group-hover:text-accent transition-colors">{phone}</span>
                 </div>
               </a>
 
               {/* Office Location Card */}
-              <div className="flex items-start gap-4 p-4 rounded-2xl border border-border bg-surface/50 backdrop-blur-md">
+              <div className="flex items-center gap-4 p-4 rounded-2xl border border-border bg-background">
                 <div className="h-11 w-11 flex-none rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -173,35 +179,35 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
                   </svg>
                 </div>
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted block">Global Offices</span>
-                  <span className="text-sm font-bold text-foreground">{address || "Bhubaneswar, Odisha, India · London, United Kingdom"}</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-muted block">Global Offices</span>
+                  <span className="text-xs sm:text-sm font-bold text-foreground">{address || "Bhubaneswar, Odisha, India"}</span>
                 </div>
               </div>
 
               {/* Business Hours Card */}
-              <div className="flex items-start gap-4 p-4 rounded-2xl border border-border bg-surface/50 backdrop-blur-md">
+              <div className="flex items-center gap-4 p-4 rounded-2xl border border-border bg-background">
                 <div className="h-11 w-11 flex-none rounded-xl bg-accent/10 text-accent flex items-center justify-center border border-accent/20">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted block">Business Hours</span>
-                  <span className="text-sm font-bold text-foreground">Mon – Fri: 9:00 AM – 6:00 PM IST / GMT</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-muted block">Business Hours</span>
+                  <span className="text-xs sm:text-sm font-bold text-foreground">Mon – Fri: 9:00 AM – 6:00 PM IST / GMT</span>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* RIGHT SIDE: Clean Enterprise Contact Form */}
+          {/* RIGHT SIDE: Clean Enterprise Contact Form Container */}
           <motion.div
-            initial={{ opacity: 0, x: 30, filter: "blur(6px)" }}
-            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
             className="lg:col-span-7"
           >
-            <div className="rounded-3xl border border-white/15 bg-background/90 p-8 sm:p-10 shadow-2xl backdrop-blur-2xl relative overflow-hidden">
+            <div className="rounded-3xl border border-border bg-background p-8 sm:p-10 shadow-xl relative overflow-hidden">
               
               <AnimatePresence mode="wait">
                 {isSuccess ? (
@@ -213,7 +219,7 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
                     exit={{ opacity: 0, scale: 0.95 }}
                     className="py-12 text-center space-y-6"
                   >
-                    <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                    <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/30">
                       <svg className="w-10 h-10 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
@@ -223,8 +229,8 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
                       <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
                         Thank you! Your message has been sent.
                       </h3>
-                      <p className="text-sm text-muted max-w-md mx-auto leading-relaxed">
-                        We have received your inquiry. A senior member of our team will respond to your email within 24 hours.
+                      <p className="text-xs sm:text-sm text-muted max-w-md mx-auto leading-relaxed font-normal">
+                        We have received your inquiry. A senior member of our technology team will respond to your email within 2 hours.
                       </p>
                     </div>
 
@@ -242,13 +248,13 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
                   /* Contact Form */
                   <form key="contact-form" onSubmit={handleSubmit} noValidate className="space-y-5">
                     <div>
-                      <h3 className="text-xl font-bold text-foreground mb-1 tracking-tight">Send Us a Direct Message</h3>
-                      <p className="text-xs text-muted">Fill out the quick form below and our team will get right back to you.</p>
+                      <h3 className="text-xl font-extrabold text-foreground tracking-tight">Send Us a Direct Message</h3>
+                      <p className="text-xs text-muted mt-1">Fill out the quick form below and our team will get right back to you.</p>
                     </div>
 
                     {/* Row 1: Full Name & Business Email */}
                     <div className="grid gap-5 sm:grid-cols-2">
-                      <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-muted">
+                      <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-foreground">
                         Full Name <span className="text-accent">*</span>
                         <input
                           className={`${inputClassName} ${errors.fullName ? "border-red-500/70" : ""}`}
@@ -261,7 +267,7 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
                         {errors.fullName && <p className="text-red-500 text-[11px] font-semibold tracking-normal mt-1">{errors.fullName}</p>}
                       </label>
 
-                      <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-muted">
+                      <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-foreground">
                         Business Email <span className="text-accent">*</span>
                         <input
                           className={`${inputClassName} ${errors.businessEmail ? "border-red-500/70" : ""}`}
@@ -277,8 +283,8 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
 
                     {/* Row 2: Phone Number (Optional) & Company Name */}
                     <div className="grid gap-5 sm:grid-cols-2">
-                      <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-muted">
-                        Phone Number <span className="text-slate-400 font-normal">(Optional)</span>
+                      <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-foreground">
+                        Phone Number <span className="text-muted font-normal">(Optional)</span>
                         <input
                           className={inputClassName}
                           type="tel"
@@ -289,8 +295,8 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
                         />
                       </label>
 
-                      <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-muted">
-                        Company Name <span className="text-slate-400 font-normal">(Optional)</span>
+                      <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-foreground">
+                        Company Name <span className="text-muted font-normal">(Optional)</span>
                         <input
                           className={inputClassName}
                           type="text"
@@ -303,7 +309,7 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
                     </div>
 
                     {/* Row 3: Interested Service Dropdown */}
-                    <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-muted relative">
+                    <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-foreground relative">
                       Interested Service
                       <div className="relative">
                         <select
@@ -325,7 +331,7 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
                     </label>
 
                     {/* Row 4: Message */}
-                    <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-muted">
+                    <label className="block space-y-1.5 text-xs font-bold uppercase tracking-wider text-foreground">
                       Message <span className="text-accent">*</span>
                       <textarea
                         className={`${inputClassName} ${errors.message ? "border-red-500/70" : ""}`}
@@ -341,34 +347,32 @@ export function Contact({ email = "contact@optivisconsultancyservices.tech", pho
                     {/* CTAs Bar */}
                     <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
                       {/* Primary CTA: Send Message */}
-                      <Button
+                      <button
                         type="submit"
-                        variant="accent"
-                        className="w-full sm:w-auto px-8 py-3.5 text-xs font-bold uppercase tracking-wider shadow-xl shadow-accent/25"
                         disabled={isSubmitting}
+                        className="w-full sm:w-auto rounded-2xl bg-[#E8A33D] hover:bg-[#d99432] text-slate-950 font-bold px-8 py-4 text-xs uppercase tracking-wider shadow-lg transition-all duration-200 active:scale-95 flex-none"
                       >
                         {isSubmitting ? (
                           <span className="flex items-center justify-center gap-2">
-                            <svg className="animate-spin h-4 w-4 text-secondary" fill="none" viewBox="0 0 24 24">
+                            <svg className="animate-spin h-4 w-4 text-slate-950" fill="none" viewBox="0 0 24 24">
                               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                             </svg>
                             Sending...
                           </span>
                         ) : (
-                          "Send Message"
+                          "Send Message →"
                         )}
-                      </Button>
+                      </button>
 
                       {/* Secondary CTA: Schedule a Strategy Call */}
-                      <Button
+                      <button
                         type="button"
                         onClick={() => openBookingModal("Custom Solution")}
-                        variant="secondary"
-                        className="w-full sm:w-auto px-7 py-3.5 text-xs font-bold uppercase tracking-wider border-border"
+                        className="w-full sm:w-auto rounded-2xl border border-border bg-surface hover:bg-border/40 text-foreground font-bold px-7 py-4 text-xs uppercase tracking-wider transition-colors"
                       >
-                        Schedule a Strategy Call
-                      </Button>
+                        Schedule a Strategy Call →
+                      </button>
                     </div>
                   </form>
                 )}

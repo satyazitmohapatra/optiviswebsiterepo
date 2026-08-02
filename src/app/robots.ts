@@ -3,19 +3,50 @@ import type { MetadataRoute } from 'next'
 export const dynamic = 'force-static'
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = 'https://optivisconsultancyservices.tech'
+
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/', '/_next/', '/static/'],
+        disallow: ['/api/', '/_next/', '/static/'],
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
-        crawlDelay: 0,
+      },
+      {
+        userAgent: 'Googlebot-Image',
+        allow: '/images/',
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+      },
+      {
+        userAgent: 'Slurp',
+        allow: '/',
+      },
+      {
+        userAgent: 'DuckDuckBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'Yandexbot',
+        allow: '/',
+      },
+      // Block AI scrapers from training on content (optional, keeps content exclusive)
+      {
+        userAgent: 'GPTBot',
+        disallow: ['/'],
+      },
+      {
+        userAgent: 'CCBot',
+        disallow: ['/'],
       },
     ],
-    sitemap: 'https://optivisconsultancyservices.tech/sitemap.xml',
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   }
 }

@@ -61,6 +61,8 @@ export function CustomCursor() {
       animFrameId = requestAnimationFrame(updateCursorPosition);
     };
 
+    let lastTarget: HTMLElement | null = null;
+
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
@@ -72,7 +74,9 @@ export function CustomCursor() {
       }
 
       const target = e.target as HTMLElement | null;
-      if (target) {
+      if (target && target !== lastTarget) {
+        lastTarget = target;
+
         // Detect interactive elements (links, buttons, clickable elements)
         const interactive = target.closest(
           'a, button, [role="button"], input[type="submit"], input[type="button"], select, label[for], summary, [data-cursor="hover"]'

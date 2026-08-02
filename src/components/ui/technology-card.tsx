@@ -12,11 +12,7 @@ export function TechnologyCard({ tech, delayIndex = 0 }: TechnologyCardProps) {
 
   return (
     <div
-      className="group relative flex w-[220px] h-[90px] flex-none items-center gap-3.5 rounded-[24px] border border-white/12 bg-white/[0.04] p-4 backdrop-blur-xl shadow-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.03] hover:border-primary/50 hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-primary/20 cursor-pointer select-none overflow-hidden"
-      style={{
-        animation: "float-micro 6s ease-in-out infinite",
-        animationDelay,
-      }}
+      className="group relative flex w-[220px] h-[90px] flex-none items-center gap-3.5 rounded-[24px] border border-white/12 bg-[#0B172B]/90 p-4 shadow-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.03] hover:border-primary/50 hover:bg-[#0F203D] hover:shadow-2xl hover:shadow-primary/20 cursor-pointer select-none overflow-hidden"
     >
       {/* Specular Inner Glass Highlight */}
       <div className="pointer-events-none absolute inset-0 rounded-[24px] bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />

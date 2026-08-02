@@ -10,10 +10,10 @@ type SectionHeadingProps = {
 
 export function SectionHeading({ badge, title, description, align = "left" }: SectionHeadingProps) {
   return (
-    <div className={cn("space-y-4", align === "center" && "mx-auto max-w-2xl text-center")}>
-      {badge ? <Badge label={badge} className={align === "center" ? "mx-auto" : undefined} /> : null}
+    <div className={cn("space-y-3.5", align === "center" && "mx-auto max-w-2xl text-center flex flex-col items-center")}>
+      {badge ? <Badge label={badge} className={align === "center" ? "justify-center" : undefined} /> : null}
       <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">{title}</h2>
-      {description ? <p className="text-base leading-7 text-muted sm:text-lg">{description}</p> : null}
+      {description ? <p className="text-base leading-relaxed text-muted sm:text-lg">{description}</p> : null}
     </div>
   );
 }

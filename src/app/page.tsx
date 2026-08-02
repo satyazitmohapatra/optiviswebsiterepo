@@ -12,6 +12,9 @@ import { Services } from "@/components/sections/services";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { TrustedTechnologies } from "@/components/sections/trusted-technologies";
 import { Team } from "@/components/sections/team";
+import { FAQ } from "@/components/sections/faq";
+import { FreeAuditBanner } from "@/components/sections/free-audit-banner";
+import { RiskFreeGuarantee } from "@/components/sections/risk-free-guarantee";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { content } from "@/lib/content";
 
@@ -20,9 +23,12 @@ const SECTION_TRACKING = [
   { id: "about", label: "Who We Are" },
   { id: "what-we-do", label: "Technologies" },
   { id: "services", label: "Services" },
+  { id: "guarantee", label: "Guarantee" },
   { id: "team", label: "Team" },
   { id: "pricing", label: "Pricing" },
+  { id: "free-audit", label: "Free Audit" },
   { id: "insights", label: "Insights" },
+  { id: "faq", label: "FAQ" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -49,14 +55,12 @@ export default function Home() {
           description={content.whyChooseUs.description}
           reasons={content.whyChooseUs.reasons}
         />
+        <RiskFreeGuarantee />
         <Team />
         <Pricing plans={content.pricing} />
+        <FreeAuditBanner />
         <Insights insights={content.insights} />
-        <CtaBanner
-          headline={content.ctaBanner.headline}
-          description={content.ctaBanner.description}
-          buttonLabel={content.ctaBanner.buttonLabel}
-        />
+        <FAQ />
         <Contact 
           email={content.company.email} 
           phone={content.company.phone} 

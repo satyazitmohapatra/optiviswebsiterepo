@@ -90,14 +90,19 @@ export function TeamDrawer({ member, onClose }: TeamDrawerProps) {
                   <img
                     src={member.portrait}
                     alt={member.name}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover object-center"
                   />
                 </div>
 
                 <div className="flex-1 min-w-0 pr-8">
-                  <span className="inline-block rounded-full bg-primary/10 text-primary border border-primary/20 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider mb-2">
-                    {member.role}
-                  </span>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary flex-none" />
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-primary truncate">
+                      {member.role}
+                    </span>
+                  </div>
                   <h2 id="team-drawer-title" className="text-2xl font-extrabold text-slate-900 tracking-tight truncate">
                     {member.name}
                   </h2>

@@ -58,7 +58,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto !important;
   scroll-padding-top: 5rem;
 }
 
@@ -176,8 +176,7 @@ h3 {
   width: 38px;
   height: 38px;
   border: 1.5px solid color-mix(in srgb, var(--color-primary) 70%, transparent);
-  background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
-  backdrop-filter: blur(0.5px);
+  background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
 /* Visible state */

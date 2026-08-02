@@ -214,7 +214,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="min-h-full bg-background text-foreground transition-colors duration-500" suppressHydrationWarning>
-        <ThemeProvider defaultTheme="system">
+        <ThemeProvider defaultTheme="light" enableSystem={false}>
           <BookingProvider>
             <SmoothScroll>
               <CustomCursor />

@@ -7,7 +7,9 @@ import { BookingModal } from "@/components/ui/booking-modal";
 import { generateStructuredData } from "@/lib/seo-schema";
 import "./globals.css";
 
-const BASE_URL = "https://optivisconsultancyservices.tech";
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://optivisconsultancyservices.tech");
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -114,8 +116,8 @@ export const metadata: Metadata = {
       "Transform your enterprise with cutting-edge digital solutions, AI analytics, cloud engineering, and custom full-stack web development. Free 48-hour technical audit available.",
     images: [
       {
-        url: `${BASE_URL}/images/og-image.png`,
-        secureUrl: `${BASE_URL}/images/og-image.png`,
+        url: `${BASE_URL}/images/og-image.png?v=2`,
+        secureUrl: `${BASE_URL}/images/og-image.png?v=2`,
         width: 1200,
         height: 630,
         alt: "Optivis Consultancy Services — Enterprise Digital Transformation & IT Consulting",
@@ -131,10 +133,12 @@ export const metadata: Metadata = {
     title: "Optivis — Enterprise Digital Transformation & IT Consulting",
     description:
       "Enterprise software, cloud architecture, AI analytics, and custom web development. Free 48-hour technical audit. Based in Bhubaneswar, India.",
-    images: {
-      url: `${BASE_URL}/images/og-image.png`,
-      alt: "Optivis Consultancy Services",
-    },
+    images: [
+      {
+        url: `${BASE_URL}/images/og-image.png?v=2`,
+        alt: "Optivis Consultancy Services",
+      },
+    ],
     creator: "@optivis",
     site: "@optivis",
   },

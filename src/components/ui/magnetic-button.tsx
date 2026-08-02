@@ -1,13 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, HTMLMotionProps } from "framer-motion";
 
-type MagneticButtonProps = {
+type MagneticButtonProps = HTMLMotionProps<"div"> & {
   children: React.ReactNode;
   className?: string;
   strength?: number;
-  [key: string]: any;
 };
 
 export function MagneticButton({

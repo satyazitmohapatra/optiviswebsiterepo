@@ -5,12 +5,13 @@ import { useEffect, useRef, useState } from "react";
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(true);
+  const [isTouchDevice, setIsTouchDevice] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !window.matchMedia("(pointer: fine)").matches;
+  });
 
   useEffect(() => {
-    // Detect fine pointer (mouse/trackpad) vs coarse pointer (touch devices)
     const mediaQuery = window.matchMedia("(pointer: fine)");
-    setIsTouchDevice(!mediaQuery.matches);
 
     const handleMediaChange = (e: MediaQueryListEvent) => {
       setIsTouchDevice(!e.matches);

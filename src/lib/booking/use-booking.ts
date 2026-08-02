@@ -92,7 +92,7 @@ export function useBooking() {
           setStatus("error");
           setServerError(result.message);
         }
-      } catch (err: any) {
+      } catch {
         setStatus("error");
         setServerError("An unexpected error occurred. Please try again.");
       } finally {

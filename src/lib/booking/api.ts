@@ -16,7 +16,8 @@ export function formatMeetingIsoTimestamp(meetingDate: string, meetingTime: stri
     const dateStr = meetingDate.trim();
     // Parse time string e.g. "02:00 PM"
     const [time, modifier] = meetingTime.trim().split(" ");
-    let [hours, minutes] = time.split(":").map(Number);
+    const [hoursRaw, minutes] = time.split(":").map(Number);
+    let hours = hoursRaw;
 
     if (modifier === "PM" && hours < 12) hours += 12;
     if (modifier === "AM" && hours === 12) hours = 0;
@@ -114,9 +115,9 @@ ${data.notes || "None"}
       message: "Your consultation booking has been confirmed! Our team will reach out shortly.",
       bookingId,
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     clearTimeout(timeoutId);
-    if (error.name === "AbortError") {
+    if (error instanceof Error && error.name === "AbortError") {
       return {
         success: false,
         message: "Network request timed out. Please check your internet connection and retry.",

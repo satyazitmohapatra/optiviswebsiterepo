@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useBookingModal } from "@/lib/booking/booking-context";
 import { useBooking } from "@/lib/booking/use-booking";
-import { ServiceOption, BudgetOption, TimelineOption, TimeSlotOption } from "@/lib/booking/types";
+import { ServiceOption, BudgetOption, TimeSlotOption } from "@/lib/booking/types";
 import { Button } from "./button";
 
 const SERVICE_OPTIONS: ServiceOption[] = [
@@ -31,13 +31,6 @@ const BUDGET_OPTIONS: BudgetOption[] = [
   "$15,000 - $35,000",
   "$35,000 - $75,000",
   "$75,000+",
-];
-
-const TIMELINE_OPTIONS: TimelineOption[] = [
-  "ASAP",
-  "1 Month",
-  "2–3 Months",
-  "Flexible",
 ];
 
 const TIME_SLOT_OPTIONS: TimeSlotOption[] = [

@@ -44,7 +44,7 @@ export function ThemeProvider({
 
   const value = {
     theme: "light" as Theme,
-    setTheme: (newTheme: Theme) => {
+    setTheme: () => {
       window.localStorage.setItem("theme", "light");
       setTheme("light");
     },

@@ -5,11 +5,8 @@ export type ScrollSection = {
   label: string;
 };
 
-type ScrollNavigationProps = {
-  sections: ScrollSection[];
-};
-
-export function ScrollNavigation(_props: ScrollNavigationProps) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function ScrollNavigation(_props?: { sections?: ScrollSection[] }) {
   // Floating sidebar scroll dot widget disabled per user request
   return null;
 }

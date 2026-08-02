@@ -7,8 +7,7 @@ type TechnologyCardProps = {
   delayIndex?: number;
 };
 
-export function TechnologyCard({ tech, delayIndex = 0 }: TechnologyCardProps) {
-  const animationDelay = `${(delayIndex % 5) * 0.4}s`;
+export function TechnologyCard({ tech }: TechnologyCardProps) {
 
   return (
     <div

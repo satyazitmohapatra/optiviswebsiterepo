@@ -7,7 +7,6 @@ import { TrustStrip } from "@/components/sections/trust-strip";
 import { About } from "@/components/sections/about";
 import { Pricing } from "@/components/sections/pricing";
 import { Insights } from "@/components/sections/insights";
-import { CtaBanner } from "@/components/sections/cta-banner";
 import { Services } from "@/components/sections/services";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { TrustedTechnologies } from "@/components/sections/trusted-technologies";

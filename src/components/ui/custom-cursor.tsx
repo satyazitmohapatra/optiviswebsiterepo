@@ -5,13 +5,13 @@ import { useEffect, useRef, useState } from "react";
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(() => {
-    if (typeof window === "undefined") return true;
-    return !window.matchMedia("(pointer: fine)").matches;
-  });
+  const [mounted, setMounted] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const mediaQuery = window.matchMedia("(pointer: fine)");
+    setIsTouchDevice(!mediaQuery.matches);
 
     const handleMediaChange = (e: MediaQueryListEvent) => {
       setIsTouchDevice(!e.matches);
@@ -22,7 +22,7 @@ export function CustomCursor() {
   }, []);
 
   useEffect(() => {
-    if (isTouchDevice) return;
+    if (!mounted || isTouchDevice) return;
 
     const dot = dotRef.current;
     const ring = ringRef.current;
@@ -152,9 +152,9 @@ export function CustomCursor() {
       document.removeEventListener("mouseenter", onMouseEnter);
       cancelAnimationFrame(animFrameId);
     };
-  }, [isTouchDevice]);
+  }, [mounted, isTouchDevice]);
 
-  if (isTouchDevice) return null;
+  if (!mounted || isTouchDevice) return null;
 
   return (
     <div className="custom-cursor-wrapper" aria-hidden="true">

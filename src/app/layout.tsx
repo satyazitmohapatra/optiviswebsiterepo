@@ -94,6 +94,19 @@ export const metadata: Metadata = {
     },
   },
 
+  // ── Icons & Favicons ──
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "192x192" },
+      { url: "/images/logo.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+
   // ── Format detection ──
   formatDetection: {
     email: false,

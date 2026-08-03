@@ -1,28 +1,26 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
+
+function useIsPointerFine() {
+  return useSyncExternalStore(
+    (callback) => {
+      const mediaQuery = window.matchMedia("(pointer: fine)");
+      mediaQuery.addEventListener("change", callback);
+      return () => mediaQuery.removeEventListener("change", callback);
+    },
+    () => window.matchMedia("(pointer: fine)").matches,
+    () => false
+  );
+}
 
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const isPointerFine = useIsPointerFine();
 
   useEffect(() => {
-    setMounted(true);
-    const mediaQuery = window.matchMedia("(pointer: fine)");
-    setIsTouchDevice(!mediaQuery.matches);
-
-    const handleMediaChange = (e: MediaQueryListEvent) => {
-      setIsTouchDevice(!e.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleMediaChange);
-    return () => mediaQuery.removeEventListener("change", handleMediaChange);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted || isTouchDevice) return;
+    if (!isPointerFine) return;
 
     const dot = dotRef.current;
     const ring = ringRef.current;
@@ -43,7 +41,6 @@ export function CustomCursor() {
     };
 
     const updateCursorPosition = () => {
-      // Smooth lerp easing for ring (60 FPS)
       ringX = lerp(ringX, mouseX, 0.18);
       ringY = lerp(ringY, mouseY, 0.18);
 
@@ -78,7 +75,6 @@ export function CustomCursor() {
       if (target && target !== lastTarget) {
         lastTarget = target;
 
-        // Detect interactive elements (links, buttons, clickable elements)
         const interactive = target.closest(
           'a, button, [role="button"], input[type="submit"], input[type="button"], select, label[for], summary, [data-cursor="hover"]'
         );
@@ -96,7 +92,6 @@ export function CustomCursor() {
           }
         }
 
-        // Detect text inputs / editable text where default cursor should be preserved
         const isTextInput = target.closest(
           'input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]), textarea, [contenteditable="true"]'
         );
@@ -152,9 +147,9 @@ export function CustomCursor() {
       document.removeEventListener("mouseenter", onMouseEnter);
       cancelAnimationFrame(animFrameId);
     };
-  }, [mounted, isTouchDevice]);
+  }, [isPointerFine]);
 
-  if (!mounted || isTouchDevice) return null;
+  if (!isPointerFine) return null;
 
   return (
     <div className="custom-cursor-wrapper" aria-hidden="true">

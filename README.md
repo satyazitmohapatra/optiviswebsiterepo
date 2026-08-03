@@ -150,8 +150,9 @@ optiviswebsiterepo/
 You can customize form delivery and site URLs using `.env.local`:
 
 ```env
-# Web3Forms Key (for direct client email routing)
-NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY="28df687b-280f-403f-9bb0-f6527f90a212"
+# Web3Forms Key (Get your key from https://web3forms.com)
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY="your_web3forms_access_key_here"
+WEB3FORMS_ACCESS_KEY="your_web3forms_access_key_here"
 
 # Canonical Site URL
 NEXT_PUBLIC_SITE_URL="https://optivisconsultancyservices.tech"

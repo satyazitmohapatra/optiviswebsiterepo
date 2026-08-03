@@ -59,6 +59,7 @@ verification: {
 ### 3. **Setup Analytics & Monitoring**
 
 #### Option A: Google Analytics
+{% raw %}
 ```html
 <!-- Add to src/app/layout.tsx in the head section -->
 <Script
@@ -78,6 +79,7 @@ verification: {
   }}
 />
 ```
+{% endraw %}
 
 #### Option B: Google Tag Manager
 Similar implementation needed in the layout

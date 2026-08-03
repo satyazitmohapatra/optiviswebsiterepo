@@ -82,19 +82,45 @@ export function Contact({
     setIsSubmitting(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1200));
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      setFormData({
-        fullName: "",
-        businessEmail: "",
-        phoneNumber: "",
-        company: "",
-        interestedService: "Web Development",
-        message: "",
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          businessEmail: formData.businessEmail,
+          phoneNumber: formData.phoneNumber,
+          company: formData.company,
+          interestedService: formData.interestedService,
+          message: formData.message,
+          formType: "contact",
+        }),
       });
+
+      const result = (await res.json()) as { success?: boolean; error?: string };
+      setIsSubmitting(false);
+
+      if (res.ok && result.success) {
+        setIsSuccess(true);
+        setFormData({
+          fullName: "",
+          businessEmail: "",
+          phoneNumber: "",
+          company: "",
+          interestedService: "Web Development",
+          message: "",
+        });
+      } else {
+        setErrors((prev) => ({
+          ...prev,
+          message: result.error || "Failed to send message. Please try again.",
+        }));
+      }
     } catch {
       setIsSubmitting(false);
+      setErrors((prev) => ({
+        ...prev,
+        message: "Network error. Please try again.",
+      }));
     }
   };
 

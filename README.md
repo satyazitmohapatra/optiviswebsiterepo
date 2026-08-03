@@ -1,76 +1,118 @@
-# 🚀 Optivis Web App
+<div align="center">
+  <a href="https://optivisconsultancyservices.tech" target="_blank" rel="noopener noreferrer">
+    <img src="public/images/logo.png" width="180" alt="Optivis Logo" />
+  </a>
 
-[![CI](https://github.com/satyazitmohapatra/optiviswebapp/actions/workflows/ci.yml/badge.svg)](https://github.com/satyazitmohapatra/optiviswebapp/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen)](https://nodejs.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-16+-black)](https://nextjs.org/)
+  # ⚡ Optivis Consultancy Services
 
-A premium, conversion-focused enterprise website for **Optivis Consultancy Services**. Built with a focus on performance, accessibility, and modern aesthetics using the latest **Next.js App Router** and **Tailwind CSS**.
+  ### **Enterprise Digital Transformation • AI Workloads • Cloud Architecture • Full-Stack Web & Mobile Engineering**
+
+  [![Live Website](https://img.shields.io/badge/Website-optivisconsultancyservices.tech-00F0FF?style=for-the-badge&logo=googlechrome&logoColor=black)](https://optivisconsultancyservices.tech)
+  [![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript_5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
+</div>
 
 ---
 
-## ✨ Features
+## 📌 Overview
 
-- 🏎️ **Optimized Performance**: Standalone build support and image optimization.
-- 🎨 **Modern Design**: Built with Tailwind CSS, features glassmorphism and subtle micro-animations.
-- 📱 **Fully Responsive**: Adapts seamlessly to mobile, tablet, and desktop.
-- 🐍 **Extension Support**: Python virtual environment included for data processing or backend tasks.
-- 🐳 **Docker Ready**: Production-grade Dockerfile included.
-- 🤖 **CI/CD Integrated**: Automated linting and builds via GitHub Actions.
+**Optivis Consultancy Services** is an enterprise-grade digital transformation web platform. Built with **Next.js 16 (App Router + Turbopack)**, **React 19**, **TypeScript**, and **Tailwind CSS 4**, this repository powers Optivis' global online presence—delivering lightning-fast performance, rich glassmorphism aesthetics, interactive consultation booking, automated audit workflows, and deep SEO optimization.
+
+Headquartered in **Bhubaneswar, Odisha, India**, Optivis serves enterprise clients globally across India, the United States, United Kingdom, UAE, and Singapore.
+
+---
+
+## ✨ Features & Highlights
+
+### 🎨 **Modern Design & User Experience**
+- **Sleek Dark Mode Aesthetics**: Dynamic glassmorphism panels, vibrant gradient accents, and curated HSL color schemes.
+- **Custom Interactive Cursor**: Smooth physics-based custom tracking cursor with hover & text input detection (hydration-safe).
+- **Framer Motion Micro-Animations**: Smooth scroll reveal animations, modal transitions, and interactive UI component states.
+- **Full Responsiveness**: Mobile-first architecture tested across all screen dimensions.
+
+### 📅 **Enterprise Consultation Booking Engine**
+- **Interactive Booking Modal**: Real-time service selection, budget range estimation, date/time scheduling, and timezone formatting.
+- **Instant Email Dispatch**: Submits lead data directly via **Web3Forms API** with structured email summaries delivered to the team inbox.
+
+### 📩 **Contact & Free Technical Audit Forms**
+- **Connected API Route (`/api/contact`)**: Server-side validation and email submission endpoint.
+- **Free 48-Hour Technical Audit Banner**: Instant website/app URL evaluation request workflow.
+- **Robust Error Handling**: Real-time form validation with clear user feedback and confirmation states.
+
+### 🚀 **Comprehensive SEO & Structured Data (JSON-LD)**
+- **Dynamic Meta Tags**: Automated OpenGraph, Twitter Cards, Canonical URLs, and Robots configuration.
+- **JSON-LD Schema Integration**: Full support for `Organization`, `LocalBusiness`, `WebSite`, `FAQPage`, `BreadcrumbList`, and `Person` schemas.
+- **High Performance**: Optimized Next.js static page generation and `.webp` image assets.
+
+### 🛠️ **Developer Experience & Tooling**
+- **Turbopack Compiler**: Lightning-fast local development HMR and production builds.
+- **Containerized**: Production-grade `Dockerfile` included for cloud deployments (Vercel, AWS, Docker).
+- **Python Integration**: Pre-configured Python virtual environment (`venv`) for data scripts or auxiliary tools.
+- **CI/CD Integration**: GitHub Actions configuration for automated linting and build validation.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **UI Components**: Custom reusable primitives under `src/components/ui`.
-- **Backend/Tools**: Python 3.11 with `pip` requirements.
+| Category | Technology |
+|---|---|
+| **Core Framework** | [Next.js 16 (App Router)](https://nextjs.org/) + [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) |
+| **Language** | [TypeScript 5](https://www.typescriptlang.org/) / React 19 |
+| **Styling** | [Tailwind CSS 4](https://tailwindcss.com/) / Vanilla CSS Tokens |
+| **Animations** | [Framer Motion](https://www.framer.com/motion/) / Lucide Icons |
+| **Form & Email Delivery** | [Web3Forms API](https://web3forms.com/) / Next.js Server API Routes |
+| **Utility & Tooling** | ESLint / PostCSS / Python 3.11 (`venv`) |
+| **Deployment** | Docker / GitHub Pages (`.nojekyll`) / Vercel |
 
 ---
 
 ## 🚀 Getting Started
 
-### Node.js (Frontend)
+### Prerequisites
+- **Node.js**: `>= 20.0.0`
+- **npm**: `>= 10.0.0`
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-2. **Run in development mode:**
-   ```bash
-   npm run dev
-   ```
-3. **Build for production:**
-   ```bash
-   npm run build
-   ```
-
-### Python (Backend/Tools)
-
-A virtual environment is pre-configured. To activate and manage:
-
-- **Windows:** `.\venv\Scripts\Activate.ps1`
-- **Linux/macOS:** `source venv/bin/activate`
-
-To reinstall dependencies:
+### 1. Clone the Repository
 ```bash
-.\setup-python.ps1
+git clone https://github.com/satyazitmohapatra/optiviswebsiterepo.git
+cd optiviswebsiterepo
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+### 3. Run Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+### 4. Production Build & Start
+```bash
+# Compile optimized production build
+npm run build
+
+# Start production server
+npm run start
 ```
 
 ---
 
-## 🐳 Docker Support
+## 🐳 Docker Deployment
 
-Build and run the production container:
+Build and run using Docker:
 
 ```bash
-# Build
-docker build -t optivis-app .
+# Build Docker image
+docker build -t optivis-webapp .
 
-# Run
-docker run -p 3000:3000 optivis-app
+# Run Docker container
+docker run -p 3000:3000 optivis-webapp
 ```
 
 ---
@@ -78,38 +120,59 @@ docker run -p 3000:3000 optivis-app
 ## 📂 Project Structure
 
 ```text
+optiviswebsiterepo/
+├── public/                     # Static assets (WebP team portraits, logos, icons)
+│   ├── images/                 # Optimized WebP & PNG visual assets
+│   └── .nojekyll               # Disables Jekyll processing on GitHub Pages
 ├── src/
-│   ├── app/            # Next.js App Router (pages & layout)
-│   ├── components/     # UI Primitives & Sections
-│   ├── content/        # Centralized site content (JSON)
-│   └── lib/            # Shared utilities & configurations
-├── public/             # Static assets (images, icons)
-├── .github/workflows/ # GitHub Actions CI
-├── venv/               # Python Virtual Environment
-├── Dockerfile          # Production Docker configuration
-└── requirements.txt    # Python dependencies
+│   ├── app/                    # Next.js App Router
+│   │   ├── api/contact/        # Contact & Audit submission API route
+│   │   ├── globals.css         # Custom design system tokens & styles
+│   │   ├── layout.tsx          # Root Layout (Providers, Navbar, Footer, CustomCursor)
+│   │   └── page.tsx            # Main Landing Page assembly
+│   ├── components/
+│   │   ├── layout/             # Navbar, Footer, Container, SmoothScroll
+│   │   ├── sections/           # Hero, Services, About, Pricing, Team, Contact, Audit
+│   │   └── ui/                 # BookingModal, CustomCursor, Cards, Badges
+│   ├── data/                   # Dynamic site content (team members, services, stats)
+│   └── lib/                    # Booking API engine, SEO utils, Schema generators
+├── .nojekyll                   # Root GitHub Pages configuration
+├── Dockerfile                  # Production container configuration
+├── next.config.ts              # Next.js configuration
+├── tailwind.config.ts          # Tailwind styling options
+└── package.json                # Project dependencies & scripts
 ```
 
 ---
 
-## 🎨 Design System
+## ⚙️ Environment Variables (Optional)
 
-Customization is centralized for ease of maintenance:
+You can customize form delivery and site URLs using `.env.local`:
 
-- **Colors**: Update CSS variables in `src/app/globals.css`.
-- **Themes**: Configure `tailwind.config.ts` for semantic mappings.
-- **Copy/Content**: All business text lives in `src/content/site-content.json`.
+```env
+# Web3Forms Key (for direct client email routing)
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY="28df687b-280f-403f-9bb0-f6527f90a212"
+
+# Canonical Site URL
+NEXT_PUBLIC_SITE_URL="https://optivisconsultancyservices.tech"
+```
 
 ---
 
-## 🤝 Contributing
+## 🔗 Connect With Us
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+- **Official Website**: [optivisconsultancyservices.tech](https://optivisconsultancyservices.tech)
+- **LinkedIn**: [Optivis Consultancy Services](https://www.linkedin.com/company/optivisconsultancy)
+- **Instagram**: [@optivisconsultancy](https://instagram.com/optivisconsultancy)
+- **Support Email**: [optivis.ocs.support@gmail.com](mailto:optivis.ocs.support@gmail.com)
+- **Phone**: +91 79782 89942
+
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the [MIT License](LICENSE).
 
----
-
-Developed with ❤️ by **Optivis**.
+<div align="center">
+  <sub>Developed with ❤️ by <strong>Optivis Consultancy Services</strong></sub>
+</div>

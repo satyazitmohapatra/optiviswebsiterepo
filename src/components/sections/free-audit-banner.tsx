@@ -63,11 +63,29 @@ export function FreeAuditBanner() {
     setIsSubmitting(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: name || "Website Visitor",
+          email: email,
+          websiteUrl: websiteUrl,
+          formType: "free-audit",
+          interestedService: "Free 48-Hour Technical & Architecture Audit",
+        }),
+      });
+
+      const result = (await res.json()) as { success?: boolean; error?: string };
       setIsSubmitting(false);
-      setIsSuccess(true);
+
+      if (res.ok && result.success) {
+        setIsSuccess(true);
+      } else {
+        setError(result.error || "Failed to submit free audit request.");
+      }
     } catch {
       setIsSubmitting(false);
+      setError("Network error. Please try again.");
     }
   };
 

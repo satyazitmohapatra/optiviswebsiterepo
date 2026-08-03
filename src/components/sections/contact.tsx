@@ -82,24 +82,71 @@ export function Contact({
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          businessEmail: formData.businessEmail,
-          phoneNumber: formData.phoneNumber,
-          company: formData.company,
-          interestedService: formData.interestedService,
-          message: formData.message,
-          formType: "contact",
-        }),
-      });
+      let isSuccessSubmission = false;
+      let errorMessage = "";
 
-      const result = (await res.json()) as { success?: boolean; error?: string };
+      // Primary Attempt: Direct client-side fetch to Web3Forms (passes Cloudflare browser checks natively)
+      try {
+        const web3Key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "28df687b-280f-403f-9bb0-f6527f90a212";
+        const directRes = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: web3Key,
+            subject: `New Contact Form Inquiry from ${formData.fullName}`,
+            from_name: "Optivis Website Contact Form",
+            full_name: formData.fullName,
+            email: formData.businessEmail,
+            phone: formData.phoneNumber || "N/A",
+            company: formData.company || "N/A",
+            interested_service: formData.interestedService,
+            message: formData.message,
+          }),
+        });
+
+        const contentType = directRes.headers.get("content-type") || "";
+        if (contentType.includes("application/json")) {
+          const directData = (await directRes.json()) as { success?: boolean; message?: string };
+          if (directRes.ok && directData.success) {
+            isSuccessSubmission = true;
+          } else {
+            errorMessage = directData.message || "";
+          }
+        }
+      } catch {
+        // Direct fetch failed (e.g. blocked by client ad-blocker), fall back to API route below
+      }
+
+      // Secondary Fallback Attempt: Call internal Next.js API route
+      if (!isSuccessSubmission) {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fullName: formData.fullName,
+            businessEmail: formData.businessEmail,
+            phoneNumber: formData.phoneNumber,
+            company: formData.company,
+            interestedService: formData.interestedService,
+            message: formData.message,
+            formType: "contact",
+          }),
+        });
+
+        const result = (await res.json()) as { success?: boolean; error?: string };
+        if (res.ok && result.success) {
+          isSuccessSubmission = true;
+        } else {
+          errorMessage = result.error || errorMessage || "Failed to send message. Please try again.";
+        }
+      }
+
       setIsSubmitting(false);
 
-      if (res.ok && result.success) {
+      if (isSuccessSubmission) {
         setIsSuccess(true);
         setFormData({
           fullName: "",
@@ -112,7 +159,7 @@ export function Contact({
       } else {
         setErrors((prev) => ({
           ...prev,
-          message: result.error || "Failed to send message. Please try again.",
+          message: errorMessage || "Failed to send message. Please try again.",
         }));
       }
     } catch {

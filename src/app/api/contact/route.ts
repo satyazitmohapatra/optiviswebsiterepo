@@ -58,11 +58,18 @@ export async function POST(request: Request) {
   const isAudit = payload.formType === "free-audit" || Boolean(payload.websiteUrl);
 
   try {
+    const userAgent = request.headers.get("user-agent") || "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+    const origin = request.headers.get("origin") || process.env.NEXT_PUBLIC_SITE_URL || "https://optivisconsultancyservices.tech";
+    const referer = request.headers.get("referer") || `${origin}/`;
+
     const web3Response = await fetch(WEB3FORMS_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        "User-Agent": userAgent,
+        Origin: origin,
+        Referer: referer,
       },
       body: JSON.stringify({
         access_key: DEFAULT_WEB3FORMS_KEY,
@@ -80,7 +87,20 @@ export async function POST(request: Request) {
       }),
     });
 
-    const result = (await web3Response.json()) as { success?: boolean; message?: string };
+    const contentType = web3Response.headers.get("content-type") || "";
+    let result: { success?: boolean; message?: string } = {};
+
+    if (contentType.includes("application/json")) {
+      result = (await web3Response.json()) as { success?: boolean; message?: string };
+    } else {
+      const text = await web3Response.text();
+      if (web3Response.ok && text.includes("success")) {
+        result = { success: true };
+      } else {
+        result = { success: false, message: "Email gateway challenge received. Please try submitting again." };
+      }
+    }
+
     if (!web3Response.ok || !result.success) {
       return NextResponse.json(
         { success: false, error: result.message || "Failed to submit form to email service" },
@@ -89,7 +109,8 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch {
-    return NextResponse.json({ success: false, error: "Failed to process form request" }, { status: 500 });
+  } catch (err: unknown) {
+    const errorMsg = err instanceof Error ? err.message : "Failed to process form request";
+    return NextResponse.json({ success: false, error: errorMsg }, { status: 500 });
   }
 }

@@ -63,25 +63,72 @@ export function FreeAuditBanner() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName: name || "Website Visitor",
-          email: email,
-          websiteUrl: websiteUrl,
-          formType: "free-audit",
-          interestedService: "Free 48-Hour Technical & Architecture Audit",
-        }),
-      });
+      let isSuccessSubmission = false;
+      let errorMessage = "";
 
-      const result = (await res.json()) as { success?: boolean; error?: string };
+      // Primary Attempt: Direct client-side fetch to Web3Forms
+      try {
+        const web3Key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "28df687b-280f-403f-9bb0-f6527f90a212";
+        const fullName = name.trim() || "Website Visitor";
+        const directRes = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: web3Key,
+            subject: `Free Audit Request for ${websiteUrl || fullName}`,
+            from_name: "Optivis Website Contact Form",
+            full_name: fullName,
+            email: email,
+            website_url: websiteUrl,
+            interested_service: "Free 48-Hour Technical & Architecture Audit",
+            message: `Free audit requested for: ${websiteUrl}`,
+          }),
+        });
+
+        const contentType = directRes.headers.get("content-type") || "";
+        if (contentType.includes("application/json")) {
+          const directData = (await directRes.json()) as { success?: boolean; message?: string };
+          if (directRes.ok && directData.success) {
+            isSuccessSubmission = true;
+          } else {
+            errorMessage = directData.message || "";
+          }
+        }
+      } catch {
+        // Direct fetch failed (e.g. adblocker), fall back to API route
+      }
+
+      // Secondary Fallback Attempt: Call internal Next.js API route
+      if (!isSuccessSubmission) {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fullName: name || "Website Visitor",
+            email: email,
+            websiteUrl: websiteUrl,
+            formType: "free-audit",
+            interestedService: "Free 48-Hour Technical & Architecture Audit",
+          }),
+        });
+
+        const result = (await res.json()) as { success?: boolean; error?: string };
+        if (res.ok && result.success) {
+          isSuccessSubmission = true;
+        } else {
+          errorMessage = result.error || errorMessage || "Failed to submit free audit request.";
+        }
+      }
+
       setIsSubmitting(false);
 
-      if (res.ok && result.success) {
+      if (isSuccessSubmission) {
         setIsSuccess(true);
       } else {
-        setError(result.error || "Failed to submit free audit request.");
+        setError(errorMessage || "Failed to submit free audit request.");
       }
     } catch {
       setIsSubmitting(false);

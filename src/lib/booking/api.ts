@@ -97,15 +97,42 @@ ${data.notes || "None"}
       signal: controller.signal,
     });
 
-    clearTimeout(timeoutId);
+    let result: { success?: boolean; message?: string } = {};
+    const contentType = response.headers.get("content-type") || "";
 
-    const result = (await response.json()) as { success?: boolean; message?: string };
+    if (contentType.includes("application/json")) {
+      result = (await response.json()) as { success?: boolean; message?: string };
+    } else {
+      const text = await response.text();
+      if (response.ok && text.includes("success")) {
+        result = { success: true };
+      }
+    }
 
     if (!response.ok || !result.success) {
-      return {
-        success: false,
-        message: result.message || "Failed to process service booking. Please try again.",
-      };
+      // Fallback: try internal API route
+      const fallbackRes = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: data.fullName,
+          businessEmail: data.businessEmail,
+          phoneNumber: data.phoneNumber,
+          company: data.company,
+          interestedService: data.selectedService,
+          message: payload.message,
+          formType: "contact",
+        }),
+      });
+      const fallbackData = (await fallbackRes.json()) as { success?: boolean; error?: string };
+      if (fallbackRes.ok && fallbackData.success) {
+        result = { success: true };
+      } else {
+        return {
+          success: false,
+          message: result.message || fallbackData.error || "Failed to process service booking. Please try again.",
+        };
+      }
     }
 
     const bookingId = `OPT-${Date.now().toString(36).toUpperCase()}`;
